@@ -132,6 +132,8 @@ Matrix::Matrix(const Matrix& tmp) :miRow(tmp.miRow), miCol(tmp.miCol)
 Matrix::Matrix(Matrix&& tmp) :miRow(tmp.miRow), miCol(tmp.miCol), mpBuf(tmp.mpBuf)
 {
 	tmp.mpBuf = nullptr;
+	tmp.miRow = 0;
+	tmp.miCol = 0;
 	//Ã»±ØÒª
 	if (!isSizeValidity())
 		return;
@@ -340,6 +342,8 @@ Matrix& Matrix::operator=(Matrix&& tmp)
 	this->miRow = tmp.miRow;
 	this->miCol = tmp.miCol;
 	this->mpBuf = tmp.mpBuf;
+	tmp.miRow = 0;
+	tmp.miCol = 0;
 	tmp.mpBuf = nullptr;
 	isSizeValidity();
 	return *this;
