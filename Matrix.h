@@ -171,7 +171,7 @@ public:
 	*	@brief 移动构造函数
 	*
 	*/
-	Matrix(Matrix&& tmp);
+	Matrix(Matrix&& tmp)noexcept;
 
 	/**
 	*	@brief 析构函数
@@ -294,7 +294,7 @@ public:
 	*	@param tmp 待赋值的矩阵
 	*	@return 返回赋值之后的该矩阵的引用
 	*/
-	Matrix& operator=(Matrix&& tmp);
+	Matrix& operator=(Matrix&& tmp)noexcept;
 
 	/**
 	*	@brief 运算符重载,友元函数
