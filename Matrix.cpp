@@ -129,7 +129,7 @@ Matrix::Matrix(const Matrix& tmp) :miRow(tmp.miRow), miCol(tmp.miCol)
 	memcpy(this->mpBuf, tmp.mpBuf, this->miRow * this->miCol * sizeof(double));
 }
 /*-----------------------移动构造函数----------------------*/
-Matrix::Matrix(Matrix&& tmp) :miRow(tmp.miRow), miCol(tmp.miCol), mpBuf(tmp.mpBuf)
+Matrix::Matrix(Matrix&& tmp)noexcept :miRow(tmp.miRow), miCol(tmp.miCol), mpBuf(tmp.mpBuf)
 {
 	tmp.mpBuf = nullptr;
 	tmp.miRow = 0;
@@ -332,7 +332,7 @@ Matrix& Matrix::operator=(const Matrix& tmp)
 	return *this;
 }
 // = 移动赋值
-Matrix& Matrix::operator=(Matrix&& tmp)
+Matrix& Matrix::operator=(Matrix&& tmp)noexcept
 {
 	if (this == &tmp)
 		return *this;
