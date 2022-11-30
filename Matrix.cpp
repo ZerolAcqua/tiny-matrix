@@ -801,6 +801,8 @@ void Matrix::rowAdd(int des, int src, double factor)
 bool Matrix::rowExchange(int des, int src)
 {
 	double tmp;
+	if (des == src)
+		return false;
 	for (int i = 0; i < this->miCol; i++)
 	{
 		tmp = this->mpBuf[src * this->miCol + i];
@@ -808,7 +810,7 @@ bool Matrix::rowExchange(int des, int src)
 		this->mpBuf[des * this->miCol + i] = tmp;
 	}
 	//是否变号
-	return !des == src;
+	return true;
 }
 //将指定行乘以factor
 void Matrix::rowMultiply(int des, double factor)
