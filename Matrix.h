@@ -10,13 +10,13 @@
   *
   * Version|Auther|Date|Describe
   * --------|-----------|----------|-----------
-  * V1.0.0  |Zerol ACqua|2021/03/22|Create Files
-  * V1.1.0  |Zerol ACqua|2021/10/02|Add Functions
-  * V1.2.0  |Zerol ACqua|2021/10/09|Add Functions
-  * V1.3.0  |Zerol ACqua|2021/10/11|Add Functions
-  * V1.3.1  |Zerol ACqua|2022/01/17|Small Patches
-  * V1.4.0  |Zerol ACqua|2022/01/21|Add Functions
-  * V1.4.1  |Zerol ACqua|2022/11/30|Small Patches
+  * V1.0.0  |Zerol Acqua|2021/03/22|Create Files
+  * V1.1.0  |Zerol Acqua|2021/10/02|Add Functions
+  * V1.2.0  |Zerol Acqua|2021/10/09|Add Functions
+  * V1.3.0  |Zerol Acqua|2021/10/11|Add Functions
+  * V1.3.1  |Zerol Acqua|2022/01/17|Small Patches
+  * V1.4.0  |Zerol Acqua|2022/01/21|Add Functions
+  * V1.4.1  |Zerol Acqua|2022/11/30|Small Patches
   *
   * ## V1.0.0
   *
