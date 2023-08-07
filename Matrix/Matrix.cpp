@@ -14,21 +14,21 @@
 
 int Matrix::iPrecise = 5;
 
-/*-----------------------¹¹Ôìº¯Êı----------------------*/
-//Ä¬ÈÏ¹¹Ôìº¯Êı
+/*-----------------------æ„é€ å‡½æ•°----------------------*/
+//é»˜è®¤æ„é€ å‡½æ•°
 Matrix::Matrix()
 {
 	this->miRow = 0, this->miCol = 0;
 	this->mpBuf = nullptr;
 }
-//doubleÀà×ª¾ØÕó
+//doubleç±»è½¬çŸ©é˜µ
 Matrix::Matrix(double num)
 {
 	this->miRow = 1, this->miCol = 1;
 	this->mpBuf = new double[1];
 	mpBuf[0] = num;
 }
-//Ê¹ÓÃ³õÊ¼»¯ÁĞ±í(ĞĞÏòÁ¿)
+//ä½¿ç”¨åˆå§‹åŒ–åˆ—è¡¨(è¡Œå‘é‡)
 Matrix::Matrix(const MatIniLst& lst)
 {
 	int i = 0;
@@ -41,14 +41,14 @@ Matrix::Matrix(const MatIniLst& lst)
 		mpBuf[i++] = itm;
 	}
 }
-//Ê¹ÓÃ³õÊ¼»¯ÁĞ±í(Ò»°ãµÄ¾ØÕó,¿É×Ô¶¯²¹0)
+//ä½¿ç”¨åˆå§‹åŒ–åˆ—è¡¨(ä¸€èˆ¬çš„çŸ©é˜µ,å¯è‡ªåŠ¨è¡¥0)
 Matrix::Matrix(const std::initializer_list<MatIniLst>& lst)
 {
 	int i = 0;
 	this->miRow = lst.size();
 	for (auto itm : lst)
 	{
-		//ÕÒ³öÁĞÊı
+		//æ‰¾å‡ºåˆ—æ•°
 		if (this->miCol < itm.size())
 			this->miCol = itm.size();
 	}
@@ -61,7 +61,7 @@ Matrix::Matrix(const std::initializer_list<MatIniLst>& lst)
 		{
 			this->mpBuf[i++] = ele;
 		}
-		//²¹0
+		//è¡¥0
 		for (int j = itm.size(); j < this->miCol; j++)
 		{
 			this->mpBuf[i++] = 0;
@@ -69,7 +69,7 @@ Matrix::Matrix(const std::initializer_list<MatIniLst>& lst)
 	}
 }
 
-//Ê¹ÓÃ³õÊ¼»¯ÁĞ±í(Ò»°ãµÄ¾ØÕó,¿É×Ô¶¯²¹0)
+//ä½¿ç”¨åˆå§‹åŒ–åˆ—è¡¨(ä¸€èˆ¬çš„çŸ©é˜µ,å¯è‡ªåŠ¨è¡¥0)
 Matrix::Matrix(const std::initializer_list<MatIniLst>& lst, int col)
 {
 	int i = 0;
@@ -77,7 +77,7 @@ Matrix::Matrix(const std::initializer_list<MatIniLst>& lst, int col)
 	this->miCol = col;
 	for (auto itm : lst)
 	{
-		//ÕÒ³öÁĞÊı
+		//æ‰¾å‡ºåˆ—æ•°
 		if (this->miCol < itm.size())
 			this->miCol = itm.size();
 	}
@@ -90,15 +90,15 @@ Matrix::Matrix(const std::initializer_list<MatIniLst>& lst, int col)
 		{
 			this->mpBuf[i++] = ele;
 		}
-		//²¹0
+		//è¡¥0
 		for (int j = itm.size(); j < this->miCol; j++)
 		{
 			this->mpBuf[i++] = 0;
 		}
 	}
 }
-//Ê¹ÓÃÒ»Î¬Êı×é³õÊ¼»¯£¬
-//ÊäÈëÊı×éµÄÊ×µØÖ·¡¢¾ØÕóĞĞÊı¡¢¾ØÕóÁĞÊı¡¢Êı×é³¤¶È
+//ä½¿ç”¨ä¸€ç»´æ•°ç»„åˆå§‹åŒ–ï¼Œ
+//è¾“å…¥æ•°ç»„çš„é¦–åœ°å€ã€çŸ©é˜µè¡Œæ•°ã€çŸ©é˜µåˆ—æ•°ã€æ•°ç»„é•¿åº¦
 Matrix::Matrix(double* p, int row, int col, int count):miRow(row),miCol(col)
 {
 	if (!isSizeValidity())
@@ -117,28 +117,28 @@ Matrix::Matrix(double* p, int row, int col, int count):miRow(row),miCol(col)
 	}
 }
 
-/*-----------------------¿½±´¹¹Ôìº¯Êı----------------------*/
+/*-----------------------æ‹·è´æ„é€ å‡½æ•°----------------------*/
 Matrix::Matrix(const Matrix& tmp) :miRow(tmp.miRow), miCol(tmp.miCol)
 {
 	if (this->mpBuf != nullptr)
 		delete[]this->mpBuf;
-	//Ã»±ØÒª
+	//æ²¡å¿…è¦
 	if (!isSizeValidity())
 		return;
 	this->mpBuf = new double[this->miRow * this->miCol];
 	memcpy(this->mpBuf, tmp.mpBuf, this->miRow * this->miCol * sizeof(double));
 }
-/*-----------------------ÒÆ¶¯¹¹Ôìº¯Êı----------------------*/
+/*-----------------------ç§»åŠ¨æ„é€ å‡½æ•°----------------------*/
 Matrix::Matrix(Matrix&& tmp)noexcept :miRow(tmp.miRow), miCol(tmp.miCol), mpBuf(tmp.mpBuf)
 {
 	tmp.mpBuf = nullptr;
 	tmp.miRow = 0;
 	tmp.miCol = 0;
-	//Ã»±ØÒª
+	//æ²¡å¿…è¦
 	if (!isSizeValidity())
 		return;
 }
-/*-----------------------Îö¹¹º¯Êı----------------------*/
+/*-----------------------ææ„å‡½æ•°----------------------*/
 Matrix::~Matrix()
 {
 	if (this->mpBuf == nullptr)
@@ -151,8 +151,8 @@ Matrix::~Matrix()
 
 
 
-/*-----------------------¾²Ì¬º¯Êı-----------------------*/
-// ÓÃÓÚÉú³ÉÒ»Ğ©ÌØÊâ¾ØÕó
+/*-----------------------é™æ€å‡½æ•°-----------------------*/
+// ç”¨äºç”Ÿæˆä¸€äº›ç‰¹æ®ŠçŸ©é˜µ
 Matrix Matrix::eye(int row)
 {
 	if (row <= 0)
@@ -249,13 +249,13 @@ void Matrix::setPrecise(int precise)
 	iPrecise = precise;
 }
 
-//¶Ô½Ç¾ØÕó
+//å¯¹è§’çŸ©é˜µ
 Matrix Matrix::diag(Matrix mat)
 {
 	int row = mat.miRow;
 	int col = mat.miCol;
 
-	// ´ÓĞĞ¡¢ÁĞÏòÁ¿£¬µ½¶Ô½Ç¾ØÕó
+	// ä»è¡Œã€åˆ—å‘é‡ï¼Œåˆ°å¯¹è§’çŸ©é˜µ
 	if (row == 1)
 	{
 		Matrix result = Matrix::eye(col);
@@ -274,7 +274,7 @@ Matrix Matrix::diag(Matrix mat)
 		}
 		return result;
 	}
-	// ´Ó¾ØÕóµ½¶Ô½ÇÔªËØÁĞÏòÁ¿
+	// ä»çŸ©é˜µåˆ°å¯¹è§’å…ƒç´ åˆ—å‘é‡
 	if (row > col)
 		row = col;
 	Matrix result = Matrix::zeros(row, 1);
@@ -285,7 +285,7 @@ Matrix Matrix::diag(Matrix mat)
 	return result;
 }
 
-// Ëæ»ú¾ØÕó
+// éšæœºçŸ©é˜µ
 Matrix Matrix::randMatrix(int n)
 {
 	if (n < 1)
@@ -314,8 +314,8 @@ Matrix Matrix::randMatrix(int row, int col)
 }
 
 
-/*----------------------ÔËËã·ûÖØÔØ---------------------*/
-// = ¿½±´¸³Öµ
+/*----------------------è¿ç®—ç¬¦é‡è½½---------------------*/
+// = æ‹·è´èµ‹å€¼
 Matrix& Matrix::operator=(const Matrix& tmp)
 {
 	if (this == &tmp)
@@ -331,7 +331,7 @@ Matrix& Matrix::operator=(const Matrix& tmp)
 	memcpy(this->mpBuf, tmp.mpBuf, this->miRow * this->miCol * sizeof(double));
 	return *this;
 }
-// = ÒÆ¶¯¸³Öµ
+// = ç§»åŠ¨èµ‹å€¼
 Matrix& Matrix::operator=(Matrix&& tmp)noexcept
 {
 	if (this == &tmp)
@@ -349,22 +349,22 @@ Matrix& Matrix::operator=(Matrix&& tmp)noexcept
 	return *this;
 }
 
-// + ¼Ó·¨£¨Èô²»ÄÜ¼ÆËã£¬·µ»Ø¿Õ¾ØÕó£©
+// + åŠ æ³•ï¼ˆè‹¥ä¸èƒ½è®¡ç®—ï¼Œè¿”å›ç©ºçŸ©é˜µï¼‰
 Matrix operator+(const Matrix& lMat, const Matrix& rMat)
 {
 	return lMat.add(rMat);
 }
-// - ¼õ·¨£¨Èô²»ÄÜ¼ÆËã£¬·µ»Ø¿Õ¾ØÕó£©
+// - å‡æ³•ï¼ˆè‹¥ä¸èƒ½è®¡ç®—ï¼Œè¿”å›ç©ºçŸ©é˜µï¼‰
 Matrix operator-(const Matrix& lMat, const Matrix& rMat)
 {
 	return lMat.sub(rMat);
 }
-// * ³Ë·¨£¨Èô²»ÄÜ¼ÆËã£¬·µ»Ø¿Õ¾ØÕó£©
+// * ä¹˜æ³•ï¼ˆè‹¥ä¸èƒ½è®¡ç®—ï¼Œè¿”å›ç©ºçŸ©é˜µï¼‰
 Matrix operator*(const Matrix& lMat, const Matrix& rMat)
 {
 	return lMat.rMultiple(rMat);
 }
-// * Êı³Ë
+// * æ•°ä¹˜
 Matrix operator*(const double& lFactor, const Matrix& rMat)
 {
 	return rMat.sMultiple(lFactor);
@@ -374,7 +374,7 @@ Matrix operator*(const Matrix& lMat, const double& rFactor)
 	return lMat.sMultiple(rFactor);
 }
 
-//  ³ı·¨£¨Èô²»ÄÜ¼ÆËã£¬·µ»Ø¿Õ¾ØÕó£¬Óë³Ë·¨ÏàËÆ£©
+//  é™¤æ³•ï¼ˆè‹¥ä¸èƒ½è®¡ç®—ï¼Œè¿”å›ç©ºçŸ©é˜µï¼Œä¸ä¹˜æ³•ç›¸ä¼¼ï¼‰
 Matrix operator/(const Matrix& lMat, const Matrix& rMat)
 {
 	return lMat * rMat.inverse();
@@ -391,7 +391,7 @@ Matrix operator/(const Matrix& lMat, const double& rFactor)
 }
 
 
-// ¹ã²¥
+// å¹¿æ’­
 Matrix operator+(const Matrix& lMat, const double& rNum)
 {
 	return lMat + rNum * Matrix::ones(lMat.miRow, lMat.miCol);
@@ -411,7 +411,7 @@ Matrix operator-(const double& lNum, const Matrix& rMat)
 
 
 
-// += ×ÔÔö£¨Èô²»ÄÜ¼ÆËã£¬·µ»Ø¿Õ¾ØÕó£©
+// += è‡ªå¢ï¼ˆè‹¥ä¸èƒ½è®¡ç®—ï¼Œè¿”å›ç©ºçŸ©é˜µï¼‰
 Matrix& Matrix::operator+=(const Matrix& tmp)
 {
 	*this = *this + tmp;
@@ -422,7 +422,7 @@ Matrix& Matrix::operator+=(const double& num)
 	*this = *this + num;
 	return *this;
 }
-// -= ×Ô¼õ£¨Èô²»ÄÜ¼ÆËã£¬·µ»Ø¿Õ¾ØÕó£©
+// -= è‡ªå‡ï¼ˆè‹¥ä¸èƒ½è®¡ç®—ï¼Œè¿”å›ç©ºçŸ©é˜µï¼‰
 Matrix& Matrix::operator-=(const Matrix& tmp)
 {
 	*this = *this - tmp;
@@ -434,7 +434,7 @@ Matrix& Matrix::operator-=(const double& num)
 	return *this;
 }
 
-// ==ºÍ!= ÅĞµÈ(Ö»ÓĞÁ½¸ö¾ØÕóÏàÍ¬Ê±£¬·µ»Øtrue)
+// ==å’Œ!= åˆ¤ç­‰(åªæœ‰ä¸¤ä¸ªçŸ©é˜µç›¸åŒæ—¶ï¼Œè¿”å›true)
 bool operator==(const Matrix& lMat, const Matrix& rMat)
 {
 	int count = lMat.miRow * lMat.miCol;
@@ -451,12 +451,12 @@ bool operator!=(const Matrix& lMat, const Matrix& rMat)
 {
 	return !(lMat == rMat);
 }
-// - È¡Ïà·´
+// - å–ç›¸å
 Matrix operator-(const Matrix& Mat)
 {
 	return Mat.sMultiple(-1);
 }
-// + ²»±ä
+// + ä¸å˜
 Matrix operator+(const Matrix& Mat)
 {
 	return Mat;
@@ -490,12 +490,12 @@ Matrix Matrix::operator--(int)
 }
 
 
-// []È¡ÏÂ±ê(ÒªÓÃÁ½¸ö[]ÒÔ·ÃÎÊÔªËØ)
+// []å–ä¸‹æ ‡(è¦ç”¨ä¸¤ä¸ª[]ä»¥è®¿é—®å…ƒç´ )
 // ---------------------------------
-// ²»ÒªÔÚÀàµÄ·½·¨ÖĞÊ¹ÓÃÈ¡ÏÂ±êÔËËã·û£¡£¡£¡
-// ²»ÒªÔÚÀàµÄ·½·¨ÖĞÊ¹ÓÃÈ¡ÏÂ±êÔËËã·û£¡£¡£¡
-// ²»ÒªÔÚÀàµÄ·½·¨ÖĞÊ¹ÓÃÈ¡ÏÂ±êÔËËã·û£¡£¡£¡
-// ÇëÖ±½ÓÊ¹ÓÃmpBuf[]»ñÈ¡ÔªËØ £¡£¡£¡
+// ä¸è¦åœ¨ç±»çš„æ–¹æ³•ä¸­ä½¿ç”¨å–ä¸‹æ ‡è¿ç®—ç¬¦ï¼ï¼ï¼
+// ä¸è¦åœ¨ç±»çš„æ–¹æ³•ä¸­ä½¿ç”¨å–ä¸‹æ ‡è¿ç®—ç¬¦ï¼ï¼ï¼
+// ä¸è¦åœ¨ç±»çš„æ–¹æ³•ä¸­ä½¿ç”¨å–ä¸‹æ ‡è¿ç®—ç¬¦ï¼ï¼ï¼
+// è¯·ç›´æ¥ä½¿ç”¨mpBuf[]è·å–å…ƒç´  ï¼ï¼ï¼
 // ---------------------------------
 double*  Matrix::operator[](int num)
 {
@@ -507,7 +507,7 @@ const double*  Matrix::operator[](int num)const
 }
 
 
-// <<Á÷Êä³ö
+// <<æµè¾“å‡º
 std::ostream& operator<<(std::ostream& os,  const Matrix& tmp)
 {
 	os << '[' << std::endl;
@@ -527,27 +527,27 @@ std::ostream& operator<<(std::ostream& os,  const Matrix& tmp)
 
 
 
-/*-----------------------·ÃÎÊº¯Êı----------------------*/
-//·µ»Ø¾ØÕóµÄĞĞÊı
+/*-----------------------è®¿é—®å‡½æ•°----------------------*/
+//è¿”å›çŸ©é˜µçš„è¡Œæ•°
 int Matrix::getRow()const
 {
 	return this->miRow;
 }
-//·µ»Ø¾ØÕóµÄÁĞÊı
+//è¿”å›çŸ©é˜µçš„åˆ—æ•°
 int Matrix::getCol()const
 {
 	return this->miCol;
 }
 
-//¾ØÕó¼Ó·¨
+//çŸ©é˜µåŠ æ³•
 Matrix Matrix::add(const Matrix& tmp)const
 {
-	//Í¬ĞÍ¼ì²é
+	//åŒå‹æ£€æŸ¥
 	if (this->miRow != tmp.miRow || this->miCol != tmp.miCol)
 	{
 		return Matrix();
 	}
-	//¾ØÕó¼Ó·¨
+	//çŸ©é˜µåŠ æ³•
 	Matrix result = *this;
 
 	for (int i = 0; i < miRow * miCol; i++)
@@ -557,15 +557,15 @@ Matrix Matrix::add(const Matrix& tmp)const
 	return result;
 }
 
-//¾ØÕó¼õ·¨
+//çŸ©é˜µå‡æ³•
 Matrix Matrix::sub(const Matrix& tmp)const
 {
-	//Í¬ĞÍ¼ì²é
+	//åŒå‹æ£€æŸ¥
 	if (this->miRow != tmp.miRow || this->miCol != tmp.miCol)
 	{
 		return Matrix();
 	}
-	//¾ØÕó¼õ·¨
+	//çŸ©é˜µå‡æ³•
 	Matrix result = *this;
 
 	for (int i = 0; i < miRow * miCol; i++)
@@ -574,18 +574,18 @@ Matrix Matrix::sub(const Matrix& tmp)const
 	}
 	return result;
 }
-//¾ØÕóÊı³Ë
+//çŸ©é˜µæ•°ä¹˜
 Matrix Matrix::sMultiple(const double& factor)const
 {
 	Matrix result = *this;
-	//¾ØÕóÊı³Ë
+	//çŸ©é˜µæ•°ä¹˜
 	for (int i = 0; i < miRow * miCol; i++)
 	{
 		result.mpBuf[i] *= factor;
 	}
 	return result;
 }
-//¾ØÕóÓÒ³Ë£¬tmpÊÇÓÒ¾ØÕó
+//çŸ©é˜µå³ä¹˜ï¼Œtmpæ˜¯å³çŸ©é˜µ
 Matrix Matrix::rMultiple(const Matrix& tmp)const
 {
 	if (this->miCol != tmp.miRow)
@@ -613,7 +613,7 @@ Matrix Matrix::rMultiple(const Matrix& tmp)const
 	}
 	return result;
 }
-//¾ØÕó×ªÖÃ
+//çŸ©é˜µè½¬ç½®
 Matrix Matrix::transpose()const
 {
 	Matrix result = Matrix::zeros(this->miCol, this->miRow);
@@ -626,20 +626,20 @@ Matrix Matrix::transpose()const
 	}
 	return result;
 }
-//Çó¾ØÕóµÄĞĞÁĞÊ½£¬
-//Èô¾ØÕó²»Îª·½Õó£¬º¯Êı·µ»Øfalse,resultÎª0
+//æ±‚çŸ©é˜µçš„è¡Œåˆ—å¼ï¼Œ
+//è‹¥çŸ©é˜µä¸ä¸ºæ–¹é˜µï¼Œå‡½æ•°è¿”å›false,resultä¸º0
 bool Matrix::det(double& result)const
 {
-	//ÊÇ·ñÎª·½Õó
+	//æ˜¯å¦ä¸ºæ–¹é˜µ
 	if (!isSquareMatrix())
 	{
 		result = 0;
 		return false;
 	}
-	//ÇóĞĞÁĞÊ½µÄÖµ
+	//æ±‚è¡Œåˆ—å¼çš„å€¼
 	Matrix tmp = *this;
 
-	int count = 0;	//±äºÅ´ÎÊı
+	int count = 0;	//å˜å·æ¬¡æ•°
 	for (int i = 0; i < tmp.miRow; i++)
 	{
 		int j = 0;
@@ -667,24 +667,24 @@ bool Matrix::det(double& result)const
 	{
 		result *= tmp.mpBuf[i * tmp.miCol + i];
 	}
-	//±äºÅ
+	//å˜å·
 	if (count % 2)
 		result = -result;
 
 
 	return true;
 }
-//¸ßË¹ÏûÔª·¨
+//é«˜æ–¯æ¶ˆå…ƒæ³•
 Matrix Matrix::gauss()const
 {
-	//¸´ÖÆÒ»·İ
+	//å¤åˆ¶ä¸€ä»½
 	Matrix tmp = *this;
-	//ÏûÔª¹ı³Ì
+	//æ¶ˆå…ƒè¿‡ç¨‹
 	int j = 0, count = 0;
-	//½×Ìİ»¯
+	//é˜¶æ¢¯åŒ–
 	for (int i = 0; i < tmp.miCol; i++)
 	{
-		// ÏÈ½«¾ØÕó³õ²½½øĞĞÅÅÁĞ
+		// å…ˆå°†çŸ©é˜µåˆæ­¥è¿›è¡Œæ’åˆ—
 		for (j = i - count; j < tmp.miRow; j++)
 		{
 			if (tmp.mpBuf[j * tmp.miCol + i] != 0)
@@ -693,20 +693,20 @@ Matrix Matrix::gauss()const
 				break;
 			}
 		}
-		// Èô±¾ÁĞµÄÔªËØ¾ùÎªÁã£¬´ÓÏÂÒ»ÁĞµÄÍ¬Ò»¸ö³õÊ¼ĞĞÕÒÆğ
+		// è‹¥æœ¬åˆ—çš„å…ƒç´ å‡ä¸ºé›¶ï¼Œä»ä¸‹ä¸€åˆ—çš„åŒä¸€ä¸ªåˆå§‹è¡Œæ‰¾èµ·
 		if (j == tmp.miRow)
 		{
 			count++;
 			continue;
 		}
-		// ¶Ô½ÇÏßÏÂÔªËØ»¯ÎªÁã
+		// å¯¹è§’çº¿ä¸‹å…ƒç´ åŒ–ä¸ºé›¶
 		for (j = i - count + 1; j < tmp.miRow; j++)
 		{
 			double factor = tmp.mpBuf[tmp.miCol * j + i] / tmp.mpBuf[tmp.miCol * (i - count) + i];
 			tmp.rowAdd(j, i - count, -factor);
 		}
 	}
-	//ĞĞ×î¼ò»¯
+	//è¡Œæœ€ç®€åŒ–
 	for (int i = 0; i < tmp.miRow; i++)
 	{
 		for (j = i; j < tmp.miCol; j++)
@@ -724,7 +724,7 @@ Matrix Matrix::gauss()const
 	}
 	return tmp;
 }
-//ÇóÖÈ
+//æ±‚ç§©
 int Matrix::rank()const
 {
 	Matrix tmp = this->gauss();
@@ -741,7 +741,7 @@ int Matrix::rank()const
 	}
 	return i;
 }
-//ÇóÄæ
+//æ±‚é€†
 Matrix Matrix::inverse()const
 {
 	double det;
@@ -754,7 +754,7 @@ Matrix Matrix::inverse()const
 	return tmp.lrDivide(this->miRow);
 }
 
-//¾ØÕóĞÎ×´µÄºÏ·¨ĞÔ¼ì²â
+//çŸ©é˜µå½¢çŠ¶çš„åˆæ³•æ€§æ£€æµ‹
 bool Matrix::isSizeValidity()
 {
 	if (this->miRow <= 0 || this->miCol <= 0)
@@ -771,13 +771,13 @@ bool Matrix::isSizeValidity()
 		return true;
 }
 
-//·½Õó¼ì²â
+//æ–¹é˜µæ£€æµ‹
 bool Matrix::isSquareMatrix()const
 {
 	return this->miRow > 0 && this->miRow == this->miCol;
 }
 
-//¿Õ¾ØÕó¼ì²â
+//ç©ºçŸ©é˜µæ£€æµ‹
 bool Matrix::isEmptyMatrix()const
 {
 	if (this->miRow == 0 || this->miCol == 0)
@@ -787,8 +787,8 @@ bool Matrix::isEmptyMatrix()const
 }
 
 
-//ĞĞÁĞÊ½ĞÔÖÊ
-//ĞĞÏßĞÔÏà¼Ó£¬°ÑsrcĞĞ±¶³Ëfactorºó¼Óµ½desÉÏ
+//è¡Œåˆ—å¼æ€§è´¨
+//è¡Œçº¿æ€§ç›¸åŠ ï¼ŒæŠŠsrcè¡Œå€ä¹˜factorååŠ åˆ°desä¸Š
 void Matrix::rowAdd(int des, int src, double factor)
 {
 	for (int i = 0; i < this->miCol; i++)
@@ -797,7 +797,7 @@ void Matrix::rowAdd(int des, int src, double factor)
 	}
 	return;
 }
-//ĞĞ½»»»,×¢Òâ±äºÅµÄÎÊÌâ
+//è¡Œäº¤æ¢,æ³¨æ„å˜å·çš„é—®é¢˜
 bool Matrix::rowExchange(int des, int src)
 {
 	double tmp;
@@ -809,10 +809,10 @@ bool Matrix::rowExchange(int des, int src)
 		this->mpBuf[src * this->miCol + i] = this->mpBuf[des * this->miCol + i];
 		this->mpBuf[des * this->miCol + i] = tmp;
 	}
-	//ÊÇ·ñ±äºÅ
+	//æ˜¯å¦å˜å·
 	return true;
 }
-//½«Ö¸¶¨ĞĞ³ËÒÔfactor
+//å°†æŒ‡å®šè¡Œä¹˜ä»¥factor
 void Matrix::rowMultiply(int des, double factor)
 {
 	for (int i = 0; i < this->miCol; i++)
@@ -821,7 +821,7 @@ void Matrix::rowMultiply(int des, double factor)
 	}
 	return;
 }
-//×óÓÒºÏ²¢
+//å·¦å³åˆå¹¶
 Matrix Matrix::lrMerge(Matrix& left,Matrix& right)
 {
 	if (left.miRow != right.miRow)
@@ -840,7 +840,7 @@ Matrix Matrix::lrMerge(Matrix& left,Matrix& right)
 	}
 	return result;
 }
-//ÉÏÏÂºÏ²¢
+//ä¸Šä¸‹åˆå¹¶
 Matrix Matrix::udMerge(Matrix& up, Matrix& down)
 {
 	if (up.miCol != down.miCol)
@@ -851,10 +851,10 @@ Matrix Matrix::udMerge(Matrix& up, Matrix& down)
 	return result;
 }
 
-//´Ó¸Ã¾ØÕóÖĞµÃµ½Ò»¿éĞ¡¾ØÕó
+//ä»è¯¥çŸ©é˜µä¸­å¾—åˆ°ä¸€å—å°çŸ©é˜µ
 Matrix Matrix::getBlock(int startRowId, int startColId, int blockRow, int blockCol)const
 {
-	//¼ì²â·Ö¿éºÏ·¨ĞÔ
+	//æ£€æµ‹åˆ†å—åˆæ³•æ€§
 	if (startRowId < 0 || startColId < 0 || blockRow <= 0 || blockCol <= 0 ||
 		startRowId + blockRow > this->miRow || startColId + blockCol > this->miCol)
 	{
@@ -872,11 +872,11 @@ Matrix Matrix::getBlock(int startRowId, int startColId, int blockRow, int blockC
 	return result;
 }
 
-//½«¸Ã¾ØÕóÖĞµÄÒ»¿éÉèÖÃÎª¸ø¶¨µÄ¾ØÕó
+//å°†è¯¥çŸ©é˜µä¸­çš„ä¸€å—è®¾ç½®ä¸ºç»™å®šçš„çŸ©é˜µ
 Matrix& Matrix::setBlock(int startRowId, int startColId,const Matrix& block)
 {
 	int blockRow = block.miRow, blockCol = block.miCol;
-	//¼ì²â·Ö¿éºÏ·¨ĞÔ
+	//æ£€æµ‹åˆ†å—åˆæ³•æ€§
 	if (startRowId < 0 || startColId < 0 || blockRow <= 0 || blockCol <= 0 ||
 		startRowId + blockRow > this->miRow || startColId + blockCol > this->miCol)
 	{
@@ -893,7 +893,7 @@ Matrix& Matrix::setBlock(int startRowId, int startColId,const Matrix& block)
 	return *this;
 }
 
-//½«±¾¾ØÕó£¨·½Õó£©»¯ÎªÉÏHessenberg¾ØÕó
+//å°†æœ¬çŸ©é˜µï¼ˆæ–¹é˜µï¼‰åŒ–ä¸ºä¸ŠHessenbergçŸ©é˜µ
 Matrix Matrix::hessenberg(Matrix &Q)const
 {
 	if (!this->isSquareMatrix())
@@ -915,11 +915,11 @@ Matrix Matrix::hessenberg(Matrix &Q)const
 	for (int i = 0; i < this->miCol - 2; i++)
 	{
 		n = result.miCol - i - 1;
-		// ¹¹Ôìn½×HouseHolder¾ØÕó
+		// æ„é€ né˜¶HouseHolderçŸ©é˜µ
 
 		x = result.getBlock(i + 1, i, n, 1);
 		sigma = sgn(x.mpBuf[0]) * sqrt((x.transpose() * x).mpBuf[0]);
-		// ËµÃ÷¸ÃÁĞÒÑ¾­ÊÇn*eµÄÁĞÏòÁ¿ÁË
+		// è¯´æ˜è¯¥åˆ—å·²ç»æ˜¯n*eçš„åˆ—å‘é‡äº†
 		if (fabs(pow(x.mpBuf[0], 2) - pow(sigma, 2)) < EPSILON)
 		{
 			continue;
@@ -945,7 +945,7 @@ Matrix Matrix::hessenberg(Matrix &Q)const
 	return result;
 }
 
-//¶Ô±¾¾ØÕó½øĞĞQR·Ö½â
+//å¯¹æœ¬çŸ©é˜µè¿›è¡ŒQRåˆ†è§£
 void Matrix::qrDecom(Matrix& Q, Matrix& R)const
 {
 	int col = this->miCol;
@@ -965,14 +965,14 @@ void Matrix::qrDecom(Matrix& Q, Matrix& R)const
 	double rho = 0;
 
 
-	// ÒÀÈ»ÊÇÊ¹ÓÃ¾µÃæ·´Éä¾ØÕó£¨HouseHolder¾ØÕó£©ºÍ·Ö¿é¼ÆËã
+	// ä¾ç„¶æ˜¯ä½¿ç”¨é•œé¢åå°„çŸ©é˜µï¼ˆHouseHolderçŸ©é˜µï¼‰å’Œåˆ†å—è®¡ç®—
 	for (int i = 0; i < size; i++)
 	{
-		// ¼ÆËã(row-i)½×¾µÃæ·´Éä¾ØÕó
+		// è®¡ç®—(row-i)é˜¶é•œé¢åå°„çŸ©é˜µ
 		n = row - i;
 		x = R.getBlock(i, i, n, 1);
 		sigma = sgn(x.mpBuf[0]) * sqrt((x.transpose() * x).mpBuf[0]);
-		// ËµÃ÷¸ÃÁĞÒÑ¾­ÊÇn*eµÄÁĞÏòÁ¿ÁË
+		// è¯´æ˜è¯¥åˆ—å·²ç»æ˜¯n*eçš„åˆ—å‘é‡äº†
 		if (fabs(pow(x.mpBuf[0], 2) - pow(sigma, 2)) < EPSILON)
 		{
 			continue;
@@ -995,13 +995,13 @@ void Matrix::qrDecom(Matrix& Q, Matrix& R)const
 	return;
 }
 
-//¼ÆËã¾ØÕóµÄÌØÕ÷Öµ
+//è®¡ç®—çŸ©é˜µçš„ç‰¹å¾å€¼
 Matrix Matrix::eigen()const
 {
 	if (!this->isSquareMatrix())
 		return Matrix();
 
-	// ´øÔ­µãÎ»ÒÆµÄQR·Ö½â·¨
+	// å¸¦åŸç‚¹ä½ç§»çš„QRåˆ†è§£æ³•
 	int col = this->miCol;
 	int count = 0;
 	Matrix Rh;
@@ -1014,7 +1014,7 @@ Matrix Matrix::eigen()const
 		Hessenberg.qrDecom4Hessenberg(Q, R);
 		Hessenberg = R * Q + bar;
 		bar = Matrix::eye(col) * Hessenberg.mpBuf[col * col - 1];
-		// µü´úÖĞÖ¹Ìõ¼ş
+		// è¿­ä»£ä¸­æ­¢æ¡ä»¶
 		count = 0;
 		for (int i = 0; i < col-1; i++)
 		{
@@ -1028,7 +1028,7 @@ Matrix Matrix::eigen()const
 		if (count == col - 1)
 		{
 			Matrix result = Matrix::diag(Hessenberg);
-			// ÅÅĞò²»ÏëĞ´ÁË£¬Ö±½ÓÓÃ¿â(
+			// æ’åºä¸æƒ³å†™äº†ï¼Œç›´æ¥ç”¨åº“(
 			std::sort(result.mpBuf, result.mpBuf + result.miRow, [](int i, int j)->bool { return i > j; });
 			return result;
 		}
@@ -1038,8 +1038,8 @@ Matrix Matrix::eigen()const
 
 
 
-/*---------------------------------------- ¸¨Öúº¯Êı ------------------------------------------*/
-//·ûºÅº¯Êı
+/*---------------------------------------- è¾…åŠ©å‡½æ•° ------------------------------------------*/
+//ç¬¦å·å‡½æ•°
 signed char Matrix::sgn(double num)
 {
 	if (num < 0)
@@ -1047,7 +1047,7 @@ signed char Matrix::sgn(double num)
 	else 
 		return 1;
 }
-//ºÏ²¢¡¢²ğ·Ö£¨ÏßĞÔ±ä»»Çó¿ÉÄæÕó£©
+//åˆå¹¶ã€æ‹†åˆ†ï¼ˆçº¿æ€§å˜æ¢æ±‚å¯é€†é˜µï¼‰
 Matrix Matrix::merge(Matrix& right)const
 {
 	if (this->miRow != right.miRow)
@@ -1066,7 +1066,7 @@ Matrix Matrix::merge(Matrix& right)const
 	}
 	return result;
 }
-//½«¾ØÕó·ÖÎª×óÓÒÁ½¸ö£¬×ó¾ØÕóÓĞcolÁĞ,·µ»ØÓÒ¾ØÕó
+//å°†çŸ©é˜µåˆ†ä¸ºå·¦å³ä¸¤ä¸ªï¼Œå·¦çŸ©é˜µæœ‰colåˆ—,è¿”å›å³çŸ©é˜µ
 Matrix Matrix::lrDivide(int col)const
 {
 	if (this->miCol <= col)
@@ -1082,10 +1082,10 @@ Matrix Matrix::lrDivide(int col)const
 	return result;
 }
 
-// ¶Ô±¾¾ØÕó£¨Hessenberg·½Õó£©½øĞĞÍêÈ«QR·Ö½â
+// å¯¹æœ¬çŸ©é˜µï¼ˆHessenbergæ–¹é˜µï¼‰è¿›è¡Œå®Œå…¨QRåˆ†è§£
 bool Matrix::qrDecom4Hessenberg(Matrix& Q, Matrix& R)const
 {
-	// ²»¿É·Ö½â
+	// ä¸å¯åˆ†è§£
 	if (!isSquareMatrix())
 	{
 		Q = Matrix();
@@ -1096,7 +1096,7 @@ bool Matrix::qrDecom4Hessenberg(Matrix& Q, Matrix& R)const
 
 	int col = this->miCol;
 	int row = col;
-	// ÀûÓÃGivens±ä»»
+	// åˆ©ç”¨Givenså˜æ¢
 	//   cos phi		sin phi 
 	//	-sin phi		cos phi	
 	Q = Matrix::eye(col);
@@ -1114,7 +1114,7 @@ bool Matrix::qrDecom4Hessenberg(Matrix& Q, Matrix& R)const
 		{
 			continue;
 		}
-		// ¹¹Ôì2½×Givens¾ØÕó
+		// æ„é€ 2é˜¶GivensçŸ©é˜µ
 		r = sqrt(pow(R.mpBuf[n * col + n], 2) + pow(R.mpBuf[(n + 1) * col + n], 2));
 		cosphi = R.mpBuf[n * col + n] / r;
 		sinphi = R.mpBuf[(n + 1) * col + n] / r;
@@ -1123,7 +1123,7 @@ bool Matrix::qrDecom4Hessenberg(Matrix& Q, Matrix& R)const
 		Givens.mpBuf[2] = -sinphi;
 		Givens.mpBuf[3] = cosphi;
 
-		// ÓÃGivens¾ØÕó½øĞĞ¸üĞÂ
+		// ç”¨GivensçŸ©é˜µè¿›è¡Œæ›´æ–°
 		temp = R.getBlock(n, 0, 2, col);
 		R.setBlock(n, 0, Givens * temp);
 		temp = Q.getBlock(n, 0, 2, col);

@@ -1,36 +1,36 @@
 #include "Matrix.h"
 #include "math.h"
 
-#define _MATRIX_DEBUG
+//#define _MATRIX_DEBUG
 
 
 using namespace std;
 int main()
 {
-	Matrix::setPrecise(1);
+	Matrix::setPrecise(5);
 
 #ifndef _MATRIX_DEBUG
-	//¹¹Ôì
+	//æž„é€ 
 	Matrix A = { 1,2,3 };
 	cout << A << endl;
-	//¿½±´¹¹Ôì
+	//æ‹·è´æž„é€ 
 	Matrix B = -+-+-+-A;
 	B += 1;
 	cout << B << endl;
-	//¿½±´¸³Öµ
+	//æ‹·è´èµ‹å€¼
 	A = { {1,2,3},
 		 {4,5,6},
 		 {7,8,10} };
 	cout << A << endl;
 
-	//×ªÖÃ+ÒÆ¶¯¹¹Ôì
+	//è½¬ç½®+ç§»åŠ¨æž„é€ 
 	Matrix C = A.transpose();
 	cout << C << endl;
-	//ÇóÄæ+ÒÆ¶¯¸³Öµ
+	//æ±‚é€†+ç§»åŠ¨èµ‹å€¼
 	B = A.inverse();
 	cout << B << endl;
 
-	//³ý·¨
+	//é™¤æ³•
 	cout << "/" << endl;
 	Matrix D = A * A - 2 * -(+(-A)) * 2;
 	cout << D.transpose() << endl;
@@ -50,10 +50,10 @@ int main()
 
 	const Matrix E = D.transpose() + A;
 	cout << E << endl;
-	D[0][0] = 1;	// ·ÇÒýÓÃ°æ±¾  ÕýÈ·
-	//E[0][0] = 1;  //	 ÒýÓÃ°æ±¾  ´íÎó
+	D[0][0] = 1;	// éžå¼•ç”¨ç‰ˆæœ¬  æ­£ç¡®
+	//E[0][0] = 1;  //	 å¼•ç”¨ç‰ˆæœ¬  é”™è¯¯
 
-	//¿Õ¾ØÕóµÄ¼æÈÝ
+	//ç©ºçŸ©é˜µçš„å…¼å®¹
 	Matrix F;
 	Matrix G = ++--F--++ * 2 - 1;
 	cout << F << endl;
@@ -68,23 +68,23 @@ int main()
 
 	cout << I << endl;
 
-	//¾ØÕó·Ö¿é£¨»òÕßÓ¦¸Ã½Ð·Ö¸î£©
-	cout << "·Ö¿é" << endl;
+	//çŸ©é˜µåˆ†å—ï¼ˆæˆ–è€…åº”è¯¥å«åˆ†å‰²ï¼‰
+	cout << "åˆ†å—" << endl;
 	cout << I.getBlock(0, 0, 3, 3) << endl;
 	cout << I.getBlock(-1, -1, 3, 3) << endl;
 	cout << I.getBlock(0, 0, 4, 4) << endl;
 	cout << I.getBlock(1, 1, -1, -1) << endl;
 	cout << I.getBlock(1, 1, 2, 2) << endl;
 
-	//ÉèÖÃ·Ö¿é
-	cout << "ÉèÖÃ·Ö¿é" << endl;
+	//è®¾ç½®åˆ†å—
+	cout << "è®¾ç½®åˆ†å—" << endl;
 	cout << I.setBlock(0, 0, Matrix::eye(4, 4)) << endl;
 	cout << I.setBlock(1, 1, Matrix::eye(2, 2)) << endl;
 	cout << I.setBlock(0, 1, Matrix::eye(2, 2)) << endl;
 	cout << I.setBlock(0, 0, Matrix({ 3,4,5 })) << endl;
 
-	// ÅÐµÈÏà¹Ø
-	cout << "ÅÐµÈ" << endl;
+	// åˆ¤ç­‰ç›¸å…³
+	cout << "åˆ¤ç­‰" << endl;
 	I == I;
 	cout << D / 1e-16 << endl;
 	A = { {1,2,3.5},
@@ -92,40 +92,42 @@ int main()
 			{3,6,9} };
 	cout << A.inverse();
 
-	// Hessenberg
-	Matrix J = { {1,2,1,2},
-				{2,2,-1,1},
-				{1,-1,1,1},
-				{2,1,1,1} };
-	Matrix Qh = Matrix::eye(4);
-	cout << "Hessenberg" << endl;
-
-	//cout << J.Hessenberg(Qh) << Qh <<Qh.transpose()<< endl;	// ºÃÉñÆæ£¿£¿£¿
-
-	Matrix H = J.Hessenberg(Qh);
-	cout << H << Qh << Qh.transpose() * J * Qh << endl;
-	Matrix Q, R;
-	H.QRDecom4Hessenberg(Q, R);
-	cout << "QR" << endl;
-	cout << Q << Q.transpose() * Q << R << H << Q * R << R * Q << endl;
-
-
-	Matrix diag = { 1,2,3,4 };
-	cout << diag << Matrix::diag(diag) << Matrix::diag(diag.transpose()) << endl;
-	Matrix A = { {1,2,3,4},{5,6,7,8},{9,10,11,12} };
-	Matrix B = { {43,32,1},{5,3,8},{9,10,11},{3,0,0} };
-	cout << A << Matrix::diag(A) << B << Matrix::diag(B) << endl;
-
 #endif
 
+	//// Hessenberg
+	//Matrix J = { {1,2,1,2},
+	//			{2,2,-1,1},
+	//			{1,-1,1,1},
+	//			{2,1,1,1} };
+	//Matrix Qh = Matrix::eye(4);
+	//cout << "Hessenberg" << endl;
+
+	////cout << J.Hessenberg(Qh) << Qh <<Qh.transpose()<< endl;	// å¥½ç¥žå¥‡ï¼Ÿï¼Ÿï¼Ÿ
+
+	//Matrix H = J.hessenberg(Qh);
+	//cout << H << Qh << Qh.transpose() * J * Qh << endl;
+	//Matrix Q, R;
+	//H.qrDecom(Q, R);
+	//cout << "QR" << endl;
+	//cout << Q << Q.transpose() * Q << R << H << Q * R << R * Q << endl;
 
 
-	Matrix B = { {1,2,1,2},
-				{2,5,-1,1},
-				{1,-1,1,1},
-				{2,1,1,1} };
-	Matrix Q, R;
-	B.qrDecom(Q, R);
-	cout << B << Q << R << Q * R << Q * Q.transpose() << endl;
+	//Matrix diag = { 1,2,3,4 };
+	//cout << diag << Matrix::diag(diag) << Matrix::diag(diag.transpose()) << endl;
+	//Matrix A = { {1,2,3,4},{5,6,7,8},{9,10,11,12} };
+	//Matrix B = { {43,32,1},{5,3,8},{9,10,11},{3,0,0} };
+	//cout << A << Matrix::diag(A) << B << Matrix::diag(B) << endl;
+
+
+
+
+
+	//Matrix B = { {1,2,1,2},
+	//			{2,5,-1,1},
+	//			{1,-1,1,1},
+	//			{2,1,1,1} };
+	//
+	//Matrix A = std::move(B);
+
 
 }
