@@ -47,6 +47,10 @@ _deps
 # VSCode
 .vscode/
 
+# Third party libraries
+
+
+
 *_build/
 build/
 install/
