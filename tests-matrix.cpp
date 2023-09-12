@@ -90,6 +90,16 @@ TEST_CASE("move construction/assignment", "[special functions]")
 
 TEST_CASE("static function", "[static function]")
 {
+  SECTION("eye")
+  {
+    Matrix A = Matrix::eye(3);
+    Matrix B = Matrix::eye(0);
+    Matrix C = Matrix::eye(-1);
+
+    REQUIRE((A[0][0] == 1 && A[0][1] == 0 && A[0][2] == 0 && A[1][0] == 0 && A[1][1] == 1 && A[1][2] == 0 && A[2][0] == 0 && A[2][1] == 0 && A[2][2] == 1));
+    REQUIRE(B==Matrix());
+    REQUIRE(C==Matrix());
+  }
 }
 
 TEST_CASE("matrix operation", "[arithmetic functions]")
