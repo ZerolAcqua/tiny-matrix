@@ -1,0 +1,800 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>tiny-matrix: Matrix/Matrix.cpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">tiny-matrix
+   </div>
+   <div id="projectbrief">轻量级矩阵类</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('Matrix_8cpp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">Matrix.cpp 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="Matrix_8h_source.html">Matrix.h</a>&quot;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a002b2f4894492820fe708b1b7e7c5e70" id="r_a002b2f4894492820fe708b1b7e7c5e70"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#a002b2f4894492820fe708b1b7e7c5e70">EPSILON</a>&#160;&#160;&#160;1e-14</td></tr>
+<tr class="separator:a002b2f4894492820fe708b1b7e7c5e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1affe27e22e73e254cbf374f1cb341e8" id="r_a1affe27e22e73e254cbf374f1cb341e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#a1affe27e22e73e254cbf374f1cb341e8">ITER_TIMES</a>&#160;&#160;&#160;100</td></tr>
+<tr class="separator:a1affe27e22e73e254cbf374f1cb341e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:aef1379198cd8d8fafb15efa18ca9e18c" id="r_aef1379198cd8d8fafb15efa18ca9e18c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#aef1379198cd8d8fafb15efa18ca9e18c">operator+</a> (const <a class="el" href="classMatrix.html">Matrix</a> &amp;lMat, const <a class="el" href="classMatrix.html">Matrix</a> &amp;rMat)</td></tr>
+<tr class="separator:aef1379198cd8d8fafb15efa18ca9e18c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9678b7b87ba0ea8759a959a02ec3db50" id="r_a9678b7b87ba0ea8759a959a02ec3db50"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#a9678b7b87ba0ea8759a959a02ec3db50">operator-</a> (const <a class="el" href="classMatrix.html">Matrix</a> &amp;lMat, const <a class="el" href="classMatrix.html">Matrix</a> &amp;rMat)</td></tr>
+<tr class="separator:a9678b7b87ba0ea8759a959a02ec3db50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00db858434665cd1e3f6492d466b7729" id="r_a00db858434665cd1e3f6492d466b7729"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#a00db858434665cd1e3f6492d466b7729">operator*</a> (const <a class="el" href="classMatrix.html">Matrix</a> &amp;lMat, const <a class="el" href="classMatrix.html">Matrix</a> &amp;rMat)</td></tr>
+<tr class="separator:a00db858434665cd1e3f6492d466b7729"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fc869fe0d12c145f59d47d308a19bf7" id="r_a1fc869fe0d12c145f59d47d308a19bf7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#a1fc869fe0d12c145f59d47d308a19bf7">operator*</a> (const double &amp;lFactor, const <a class="el" href="classMatrix.html">Matrix</a> &amp;rMat)</td></tr>
+<tr class="separator:a1fc869fe0d12c145f59d47d308a19bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fa2c5dd5baf1a5c8842a46d391a04ff" id="r_a2fa2c5dd5baf1a5c8842a46d391a04ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#a2fa2c5dd5baf1a5c8842a46d391a04ff">operator*</a> (const <a class="el" href="classMatrix.html">Matrix</a> &amp;lMat, const double &amp;rFactor)</td></tr>
+<tr class="separator:a2fa2c5dd5baf1a5c8842a46d391a04ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a737c44f59fa04bb2ac2dab1c27e2d334" id="r_a737c44f59fa04bb2ac2dab1c27e2d334"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#a737c44f59fa04bb2ac2dab1c27e2d334">operator/</a> (const <a class="el" href="classMatrix.html">Matrix</a> &amp;lMat, const <a class="el" href="classMatrix.html">Matrix</a> &amp;rMat)</td></tr>
+<tr class="separator:a737c44f59fa04bb2ac2dab1c27e2d334"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7e5fe7e7d6e2ae9a5faaf40de11e9a5" id="r_af7e5fe7e7d6e2ae9a5faaf40de11e9a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#af7e5fe7e7d6e2ae9a5faaf40de11e9a5">operator/</a> (const double &amp;lFactor, const <a class="el" href="classMatrix.html">Matrix</a> &amp;rMat)</td></tr>
+<tr class="separator:af7e5fe7e7d6e2ae9a5faaf40de11e9a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a743b72af0b707615a616c0bc6ed9070e" id="r_a743b72af0b707615a616c0bc6ed9070e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#a743b72af0b707615a616c0bc6ed9070e">operator/</a> (const <a class="el" href="classMatrix.html">Matrix</a> &amp;lMat, const double &amp;rFactor)</td></tr>
+<tr class="separator:a743b72af0b707615a616c0bc6ed9070e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30028826b7c0b7bd81133368f5c57954" id="r_a30028826b7c0b7bd81133368f5c57954"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#a30028826b7c0b7bd81133368f5c57954">operator+</a> (const <a class="el" href="classMatrix.html">Matrix</a> &amp;lMat, const double &amp;rNum)</td></tr>
+<tr class="separator:a30028826b7c0b7bd81133368f5c57954"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2259524db41ba19db3237471f16c1c2" id="r_ac2259524db41ba19db3237471f16c1c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#ac2259524db41ba19db3237471f16c1c2">operator+</a> (const double &amp;lNum, const <a class="el" href="classMatrix.html">Matrix</a> &amp;rMat)</td></tr>
+<tr class="separator:ac2259524db41ba19db3237471f16c1c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae74437d3f43befc072d7d9b08bbcd5b7" id="r_ae74437d3f43befc072d7d9b08bbcd5b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#ae74437d3f43befc072d7d9b08bbcd5b7">operator-</a> (const <a class="el" href="classMatrix.html">Matrix</a> &amp;lMat, const double &amp;rNum)</td></tr>
+<tr class="separator:ae74437d3f43befc072d7d9b08bbcd5b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6737520e59dae1086e97b68b172575e" id="r_ab6737520e59dae1086e97b68b172575e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#ab6737520e59dae1086e97b68b172575e">operator-</a> (const double &amp;lNum, const <a class="el" href="classMatrix.html">Matrix</a> &amp;rMat)</td></tr>
+<tr class="separator:ab6737520e59dae1086e97b68b172575e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14d2c9d7ebe4c5ada92b840ae86bf58a" id="r_a14d2c9d7ebe4c5ada92b840ae86bf58a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#a14d2c9d7ebe4c5ada92b840ae86bf58a">operator==</a> (const <a class="el" href="classMatrix.html">Matrix</a> &amp;lMat, const <a class="el" href="classMatrix.html">Matrix</a> &amp;rMat)</td></tr>
+<tr class="separator:a14d2c9d7ebe4c5ada92b840ae86bf58a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09ef4443ca625f57f49c682f4809e646" id="r_a09ef4443ca625f57f49c682f4809e646"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#a09ef4443ca625f57f49c682f4809e646">operator!=</a> (const <a class="el" href="classMatrix.html">Matrix</a> &amp;lMat, const <a class="el" href="classMatrix.html">Matrix</a> &amp;rMat)</td></tr>
+<tr class="separator:a09ef4443ca625f57f49c682f4809e646"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a443e399b244090d5d912a25e488874c2" id="r_a443e399b244090d5d912a25e488874c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#a443e399b244090d5d912a25e488874c2">operator-</a> (const <a class="el" href="classMatrix.html">Matrix</a> &amp;Mat)</td></tr>
+<tr class="separator:a443e399b244090d5d912a25e488874c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cf3048e1d36dce5d8a5ae979f714d72" id="r_a0cf3048e1d36dce5d8a5ae979f714d72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#a0cf3048e1d36dce5d8a5ae979f714d72">operator+</a> (const <a class="el" href="classMatrix.html">Matrix</a> &amp;Mat)</td></tr>
+<tr class="separator:a0cf3048e1d36dce5d8a5ae979f714d72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6dfe60dd9c40768e38815c93a9e628c" id="r_ad6dfe60dd9c40768e38815c93a9e628c"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#ad6dfe60dd9c40768e38815c93a9e628c">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classMatrix.html">Matrix</a> &amp;tmp)</td></tr>
+<tr class="separator:ad6dfe60dd9c40768e38815c93a9e628c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a002b2f4894492820fe708b1b7e7c5e70" name="a002b2f4894492820fe708b1b7e7c5e70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a002b2f4894492820fe708b1b7e7c5e70">&#9670;&#160;</a></span>EPSILON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EPSILON&#160;&#160;&#160;1e-14</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1affe27e22e73e254cbf374f1cb341e8" name="a1affe27e22e73e254cbf374f1cb341e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1affe27e22e73e254cbf374f1cb341e8">&#9670;&#160;</a></span>ITER_TIMES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ITER_TIMES&#160;&#160;&#160;100</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a09ef4443ca625f57f49c682f4809e646" name="a09ef4443ca625f57f49c682f4809e646"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09ef4443ca625f57f49c682f4809e646">&#9670;&#160;</a></span>operator!=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>lMat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>rMat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>判不等。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">lMat</td><td>左矩阵 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rMat</td><td>右矩阵 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回判不等结果 </dd></dl>
+
+</div>
+</div>
+<a id="a1fc869fe0d12c145f59d47d308a19bf7" name="a1fc869fe0d12c145f59d47d308a19bf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fc869fe0d12c145f59d47d308a19bf7">&#9670;&#160;</a></span>operator*() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> operator* </td>
+          <td>(</td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>lFactor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>rMat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>double*matrix，返回一个矩阵。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">lFactor</td><td>左乘的系数 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rMat</td><td>矩阵 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回矩阵数乘后的结果 </dd></dl>
+
+</div>
+</div>
+<a id="a2fa2c5dd5baf1a5c8842a46d391a04ff" name="a2fa2c5dd5baf1a5c8842a46d391a04ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fa2c5dd5baf1a5c8842a46d391a04ff">&#9670;&#160;</a></span>operator*() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> operator* </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>lMat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>rFactor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>matrix*double，返回一个矩阵。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">lMat</td><td>矩阵 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rFactor</td><td>右乘的系数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回矩阵数乘后的结果 </dd></dl>
+
+</div>
+</div>
+<a id="a00db858434665cd1e3f6492d466b7729" name="a00db858434665cd1e3f6492d466b7729"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00db858434665cd1e3f6492d466b7729">&#9670;&#160;</a></span>operator*() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> operator* </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>lMat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>rMat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>将本矩阵与所给矩阵相乘求矩阵乘积。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">lMat</td><td>左乘矩阵 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rMat</td><td>右乘矩阵 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回求矩阵乘积之后的新矩阵 </dd></dl>
+
+</div>
+</div>
+<a id="ac2259524db41ba19db3237471f16c1c2" name="ac2259524db41ba19db3237471f16c1c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2259524db41ba19db3237471f16c1c2">&#9670;&#160;</a></span>operator+() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> operator+ </td>
+          <td>(</td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>lNum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>rMat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>double+matrix，返回一个矩阵。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">lNum</td><td>左加的数字 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rMat</td><td>右加的矩阵 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回矩阵广播后的结果 </dd></dl>
+
+</div>
+</div>
+<a id="a30028826b7c0b7bd81133368f5c57954" name="a30028826b7c0b7bd81133368f5c57954"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30028826b7c0b7bd81133368f5c57954">&#9670;&#160;</a></span>operator+() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> operator+ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>lMat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>rNum</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>matrix+double，返回一个矩阵。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">lMat</td><td>左加的矩阵 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rMat</td><td>右加的数字 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回矩阵广播后的结果 </dd></dl>
+
+</div>
+</div>
+<a id="aef1379198cd8d8fafb15efa18ca9e18c" name="aef1379198cd8d8fafb15efa18ca9e18c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef1379198cd8d8fafb15efa18ca9e18c">&#9670;&#160;</a></span>operator+() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> operator+ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>lMat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>rMat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>将本矩阵与所给矩阵相加求和。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">lMat</td><td>左加矩阵 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rMat</td><td>右加矩阵 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回求和之后的该矩阵的引用 </dd></dl>
+
+</div>
+</div>
+<a id="a0cf3048e1d36dce5d8a5ae979f714d72" name="a0cf3048e1d36dce5d8a5ae979f714d72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cf3048e1d36dce5d8a5ae979f714d72">&#9670;&#160;</a></span>operator+() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> operator+ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>Mat</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>不变号。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Mat</td><td>矩阵 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回不变号的结果 </dd></dl>
+
+</div>
+</div>
+<a id="ab6737520e59dae1086e97b68b172575e" name="ab6737520e59dae1086e97b68b172575e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6737520e59dae1086e97b68b172575e">&#9670;&#160;</a></span>operator-() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> operator- </td>
+          <td>(</td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>lNum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>rMat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>double-matrix，返回一个矩阵。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">lNum</td><td>被减的数字 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rMat</td><td>减的矩阵 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回矩阵广播后的结果 </dd></dl>
+
+</div>
+</div>
+<a id="ae74437d3f43befc072d7d9b08bbcd5b7" name="ae74437d3f43befc072d7d9b08bbcd5b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae74437d3f43befc072d7d9b08bbcd5b7">&#9670;&#160;</a></span>operator-() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> operator- </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>lMat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>rNum</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>matrix-double，返回一个矩阵。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">lMat</td><td>被减的矩阵 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rMat</td><td>减的数字 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回矩阵广播后的结果 </dd></dl>
+
+</div>
+</div>
+<a id="a9678b7b87ba0ea8759a959a02ec3db50" name="a9678b7b87ba0ea8759a959a02ec3db50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9678b7b87ba0ea8759a959a02ec3db50">&#9670;&#160;</a></span>operator-() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> operator- </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>lMat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>rMat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>将本矩阵与所给矩阵相减求差。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">lMat</td><td>左被减矩阵 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rMat</td><td>右减矩阵 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回求差之后的矩阵 </dd></dl>
+
+</div>
+</div>
+<a id="a443e399b244090d5d912a25e488874c2" name="a443e399b244090d5d912a25e488874c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a443e399b244090d5d912a25e488874c2">&#9670;&#160;</a></span>operator-() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> operator- </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>Mat</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>取相反。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Mat</td><td>矩阵 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回取反结果 </dd></dl>
+
+</div>
+</div>
+<a id="af7e5fe7e7d6e2ae9a5faaf40de11e9a5" name="af7e5fe7e7d6e2ae9a5faaf40de11e9a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7e5fe7e7d6e2ae9a5faaf40de11e9a5">&#9670;&#160;</a></span>operator/() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> operator/ </td>
+          <td>(</td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>lFactor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>rMat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>double/matrix，返回一个矩阵。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">lFactor</td><td>被除的系数 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rMat</td><td>右除矩阵 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回矩阵相除后的结果 </dd></dl>
+
+</div>
+</div>
+<a id="a743b72af0b707615a616c0bc6ed9070e" name="a743b72af0b707615a616c0bc6ed9070e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a743b72af0b707615a616c0bc6ed9070e">&#9670;&#160;</a></span>operator/() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> operator/ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>lMat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>rFactor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>matrix/double，返回一个矩阵。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">lMat</td><td>被除的矩阵 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rFactor</td><td>右除系数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回矩阵相除后的结果 </dd></dl>
+
+</div>
+</div>
+<a id="a737c44f59fa04bb2ac2dab1c27e2d334" name="a737c44f59fa04bb2ac2dab1c27e2d334"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a737c44f59fa04bb2ac2dab1c27e2d334">&#9670;&#160;</a></span>operator/() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> operator/ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>lMat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>rMat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>将本矩阵与所给矩阵相除求矩阵乘积。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">lMat</td><td>被除矩阵 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rMat</td><td>右除矩阵 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回求矩阵相除之后的矩阵 </dd></dl>
+
+</div>
+</div>
+<a id="ad6dfe60dd9c40768e38815c93a9e628c" name="ad6dfe60dd9c40768e38815c93a9e628c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6dfe60dd9c40768e38815c93a9e628c">&#9670;&#160;</a></span>operator&lt;&lt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>tmp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>用于实现cout&lt;&lt; xxx &lt;&lt; xxx， 返回ostream的引用。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">os</td><td>ostream </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tmp</td><td>矩阵 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回os的引用即ostream&amp; </dd></dl>
+
+</div>
+</div>
+<a id="a14d2c9d7ebe4c5ada92b840ae86bf58a" name="a14d2c9d7ebe4c5ada92b840ae86bf58a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14d2c9d7ebe4c5ada92b840ae86bf58a">&#9670;&#160;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>lMat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>rMat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>判等。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">lMat</td><td>左矩阵 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rMat</td><td>右矩阵 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回判等结果 </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d60f6684020cb105011de41729268593.html">Matrix</a></li><li class="navelem"><a class="el" href="Matrix_8cpp.html">Matrix.cpp</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

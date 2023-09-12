@@ -1,0 +1,343 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>tiny-matrix: Matrix/Matrix.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">tiny-matrix
+   </div>
+   <div id="projectbrief">轻量级矩阵类</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('Matrix_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Matrix.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="Matrix_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">#ifndef _Matrix_H</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">#define _Matrix_H</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="preprocessor">#include &lt;initializer_list&gt;</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="Matrix_8h.html#a1f79d33234e1d1cb012a5b33a659780b">  110</a></span><span class="keyword">typedef</span> std::initializer_list&lt;double&gt; <a class="code hl_typedef" href="Matrix_8h.html#a1f79d33234e1d1cb012a5b33a659780b">MatIniLst</a>; <span class="comment">// 初始化列表</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="foldopen" id="foldopen00119" data-start="{" data-end="};">
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="classMatrix.html">  119</a></span><span class="keyword">class </span><a class="code hl_class" href="classMatrix.html">Matrix</a></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>{</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="comment">// ---- 成员变量 ----</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordtype">int</span> miRow = 0;           <span class="comment">// 行数</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordtype">int</span> miCol = 0;           <span class="comment">// 列数</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordtype">double</span> *mpBuf = <span class="keyword">nullptr</span>; <span class="comment">// 存储矩阵</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="comment">// ---- 静态成员变量 ----</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> iPrecise; <span class="comment">// 控制流输出的显示精度</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="comment">// ---- 构造析构函数 ----</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classMatrix.html#a2dba13c45127354c9f75ef576f49269b">Matrix</a>();</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <a class="code hl_function" href="classMatrix.html#a2dba13c45127354c9f75ef576f49269b">Matrix</a>(<span class="keywordtype">double</span> num);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <a class="code hl_function" href="classMatrix.html#a2dba13c45127354c9f75ef576f49269b">Matrix</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="Matrix_8h.html#a1f79d33234e1d1cb012a5b33a659780b">MatIniLst</a> &amp;lst);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <a class="code hl_function" href="classMatrix.html#a2dba13c45127354c9f75ef576f49269b">Matrix</a>(<span class="keyword">const</span> std::initializer_list&lt;MatIniLst&gt; &amp;lst);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classMatrix.html#a2dba13c45127354c9f75ef576f49269b">Matrix</a>(<span class="keyword">const</span> std::initializer_list&lt;MatIniLst&gt; &amp;lst, <span class="keywordtype">int</span> col);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classMatrix.html#a2dba13c45127354c9f75ef576f49269b">Matrix</a>(<span class="keywordtype">double</span> *p, <span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <span class="keywordtype">int</span> count);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <a class="code hl_function" href="classMatrix.html#a2dba13c45127354c9f75ef576f49269b">Matrix</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;tmp);</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <a class="code hl_function" href="classMatrix.html#a2dba13c45127354c9f75ef576f49269b">Matrix</a>(<a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;&amp;tmp) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    <a class="code hl_function" href="classMatrix.html#a9b1c3627f573d78a2f08623fdfef990f">~Matrix</a>();</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="comment">// ---- 静态成员函数 ----</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <span class="keyword">static</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#a6b7b02ed112b0cc140a2d401583bedd7">eye</a>(<span class="keywordtype">int</span> row);</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    <span class="keyword">static</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#a6b7b02ed112b0cc140a2d401583bedd7">eye</a>(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col);</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    <span class="keyword">static</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#a7bc7cd9c102ed386031548e6e48ece06">ones</a>(<span class="keywordtype">int</span> row);</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    <span class="keyword">static</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#a7bc7cd9c102ed386031548e6e48ece06">ones</a>(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col);</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <span class="keyword">static</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#a6583fc8ff85afe7a7469167bf572d6e6">zeros</a>(<span class="keywordtype">int</span> row);</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    <span class="keyword">static</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#a6583fc8ff85afe7a7469167bf572d6e6">zeros</a>(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col);</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    <span class="keyword">static</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#a98eb1cd4108872fc8e83f406c4542f92">diag</a>(<a class="code hl_class" href="classMatrix.html">Matrix</a> mat);</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span> </div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    <span class="keyword">static</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#a3516081f3e32d107f91120395c6fbe48">randMatrix</a>(<span class="keywordtype">int</span> n);</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span> </div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    <span class="keyword">static</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#a3516081f3e32d107f91120395c6fbe48">randMatrix</a>(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col);</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span> </div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classMatrix.html#a3177598eaebea3960b0ad1477f4774e7">setPrecise</a>(<span class="keywordtype">int</span> precise);</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span> </div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>    <span class="comment">// ---- 运算符重载 ----</span></div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span> </div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;<a class="code hl_function" href="classMatrix.html#a18aed17a78e2e5f3228a10b1cec620e3">operator=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;tmp);</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span> </div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;<a class="code hl_function" href="classMatrix.html#a18aed17a78e2e5f3228a10b1cec620e3">operator=</a>(<a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;&amp;tmp) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span> </div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>    <span class="keyword">friend</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_friend" href="classMatrix.html#aef1379198cd8d8fafb15efa18ca9e18c">operator+</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;lMat, <span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;rMat);</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span> </div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    <span class="keyword">friend</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_friend" href="classMatrix.html#a9678b7b87ba0ea8759a959a02ec3db50">operator-</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;lMat, <span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;rMat);</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span> </div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>    <span class="keyword">friend</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_friend" href="classMatrix.html#a00db858434665cd1e3f6492d466b7729">operator*</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;lMat, <span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;rMat);</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span> </div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>    <span class="keyword">friend</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_friend" href="classMatrix.html#a00db858434665cd1e3f6492d466b7729">operator*</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> &amp;lFactor, <span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;rMat);</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span> </div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    <span class="keyword">friend</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_friend" href="classMatrix.html#a00db858434665cd1e3f6492d466b7729">operator*</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;lMat, <span class="keyword">const</span> <span class="keywordtype">double</span> &amp;rFactor);</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span> </div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>    <span class="keyword">friend</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_friend" href="classMatrix.html#a737c44f59fa04bb2ac2dab1c27e2d334">operator/</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;lMat, <span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;rMat);</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span> </div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>    <span class="keyword">friend</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_friend" href="classMatrix.html#a737c44f59fa04bb2ac2dab1c27e2d334">operator/</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> &amp;lFactor, <span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;rMat);</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span> </div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>    <span class="keyword">friend</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_friend" href="classMatrix.html#a737c44f59fa04bb2ac2dab1c27e2d334">operator/</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;lMat, <span class="keyword">const</span> <span class="keywordtype">double</span> &amp;rFactor);</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span> </div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>    <span class="keyword">friend</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_friend" href="classMatrix.html#aef1379198cd8d8fafb15efa18ca9e18c">operator+</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;lMat, <span class="keyword">const</span> <span class="keywordtype">double</span> &amp;rNum);</div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span> </div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>    <span class="keyword">friend</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_friend" href="classMatrix.html#aef1379198cd8d8fafb15efa18ca9e18c">operator+</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> &amp;lNum, <span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;rMat);</div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span> </div>
+<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>    <span class="keyword">friend</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_friend" href="classMatrix.html#a9678b7b87ba0ea8759a959a02ec3db50">operator-</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;lMat, <span class="keyword">const</span> <span class="keywordtype">double</span> &amp;rNum);</div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span> </div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>    <span class="keyword">friend</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_friend" href="classMatrix.html#a9678b7b87ba0ea8759a959a02ec3db50">operator-</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> &amp;lNum, <span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;rMat);</div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span> </div>
+<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;<a class="code hl_function" href="classMatrix.html#aaf73e11159a4e122158da47036b59f2f">operator+=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;tmp);</div>
+<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span> </div>
+<div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;<a class="code hl_function" href="classMatrix.html#aaf73e11159a4e122158da47036b59f2f">operator+=</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> &amp;num);</div>
+<div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span> </div>
+<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;<a class="code hl_function" href="classMatrix.html#a44efdb518301efd47cbd8e312f898b85">operator-=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;tmp);</div>
+<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span> </div>
+<div class="line"><a id="l00469" name="l00469"></a><span class="lineno">  469</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;<a class="code hl_function" href="classMatrix.html#a44efdb518301efd47cbd8e312f898b85">operator-=</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> &amp;num);</div>
+<div class="line"><a id="l00470" name="l00470"></a><span class="lineno">  470</span> </div>
+<div class="line"><a id="l00479" name="l00479"></a><span class="lineno">  479</span>    <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="classMatrix.html#a14d2c9d7ebe4c5ada92b840ae86bf58a">operator==</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;lMat, <span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;rMat);</div>
+<div class="line"><a id="l00488" name="l00488"></a><span class="lineno">  488</span>    <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="classMatrix.html#a09ef4443ca625f57f49c682f4809e646">operator!=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;lMat, <span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;rMat);</div>
+<div class="line"><a id="l00489" name="l00489"></a><span class="lineno">  489</span> </div>
+<div class="line"><a id="l00497" name="l00497"></a><span class="lineno">  497</span>    <span class="keyword">friend</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_friend" href="classMatrix.html#a9678b7b87ba0ea8759a959a02ec3db50">operator-</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;Mat);</div>
+<div class="line"><a id="l00505" name="l00505"></a><span class="lineno">  505</span>    <span class="keyword">friend</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_friend" href="classMatrix.html#aef1379198cd8d8fafb15efa18ca9e18c">operator+</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;Mat);</div>
+<div class="line"><a id="l00506" name="l00506"></a><span class="lineno">  506</span> </div>
+<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;<a class="code hl_function" href="classMatrix.html#a8507366342ab66e74b5a14226bf99791">operator++</a>();</div>
+<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span> </div>
+<div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#a8507366342ab66e74b5a14226bf99791">operator++</a>(<span class="keywordtype">int</span>);</div>
+<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span> </div>
+<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;<a class="code hl_function" href="classMatrix.html#ad408cd4553ebed67bfd3fd5cc17f8423">operator--</a>();</div>
+<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span> </div>
+<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#ad408cd4553ebed67bfd3fd5cc17f8423">operator--</a>(<span class="keywordtype">int</span>);</div>
+<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span> </div>
+<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span>    <span class="keywordtype">double</span> *<a class="code hl_function" href="classMatrix.html#a279d8a40e57d37ad1bf449f1ff200dc3">operator[]</a>(<span class="keywordtype">int</span> num);</div>
+<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> *<a class="code hl_function" href="classMatrix.html#a279d8a40e57d37ad1bf449f1ff200dc3">operator[]</a>(<span class="keywordtype">int</span> num) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span> </div>
+<div class="line"><a id="l00575" name="l00575"></a><span class="lineno">  575</span>    <span class="keyword">friend</span> std::ostream &amp;<a class="code hl_friend" href="classMatrix.html#ad6dfe60dd9c40768e38815c93a9e628c">operator&lt;&lt;</a>(std::ostream &amp;os, <span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;tmp);</div>
+<div class="line"><a id="l00576" name="l00576"></a><span class="lineno">  576</span> </div>
+<div class="line"><a id="l00577" name="l00577"></a><span class="lineno">  577</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classMatrix.html#ae695751b0e1e6d2876842e0636b18ca3">getRow</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00584" name="l00584"></a><span class="lineno">  584</span> </div>
+<div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classMatrix.html#a571b16897d52577117c09fc8859361ae">getCol</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span> </div>
+<div class="line"><a id="l00599" name="l00599"></a><span class="lineno">  599</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#aa1062ff51c888295a0c3d30c4318f717">add</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;tmp) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00600" name="l00600"></a><span class="lineno">  600</span> </div>
+<div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#a9918471e9d62634a54677a9244187425">sub</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;tmp) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span> </div>
+<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#acdab13b4e7c35c4e0928f5cffd6b1555">rMultiple</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;tmp) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span> </div>
+<div class="line"><a id="l00626" name="l00626"></a><span class="lineno">  626</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#a8212085421a48678480922425741cf5b">sMultiple</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> &amp;factor) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00627" name="l00627"></a><span class="lineno">  627</span> </div>
+<div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#a759661b75b9681f3a89ff75e27933b3a">transpose</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span> </div>
+<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classMatrix.html#a670ca24c842b801a9bf180d36a4feb32">det</a>(<span class="keywordtype">double</span> &amp;result) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span> </div>
+<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#ad77d75eeabdd848444d16f6a8919842b">gauss</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span> </div>
+<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#aab07edad1c28dbd2b521bf195d33cb06">inverse</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span> </div>
+<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classMatrix.html#ad99a61a00ac4ba17020a49f358a69ee6">rank</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span> </div>
+<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classMatrix.html#a5fbd6301ddf25eadeac695eb71dd8bef">isSizeValidity</a>();</div>
+<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span> </div>
+<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classMatrix.html#acf5f93080de2ecac0c4a6052dbafbc78">isSquareMatrix</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span> </div>
+<div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classMatrix.html#a83ed19acccb95e8286e14fb4790bdb49">isEmptyMatrix</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span> </div>
+<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMatrix.html#ad535a849cdfdc6cc7b9ab22b7f38fe39">rowAdd</a>(<span class="keywordtype">int</span> des, <span class="keywordtype">int</span> src, <span class="keywordtype">double</span> factor);</div>
+<div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span> </div>
+<div class="line"><a id="l00715" name="l00715"></a><span class="lineno">  715</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classMatrix.html#a5a86494063d1772320ad0aa6a953dcbf">rowExchange</a>(<span class="keywordtype">int</span> des, <span class="keywordtype">int</span> src);</div>
+<div class="line"><a id="l00716" name="l00716"></a><span class="lineno">  716</span> </div>
+<div class="line"><a id="l00724" name="l00724"></a><span class="lineno">  724</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMatrix.html#a093d2791b0e153bb28f8a798c51893e0">rowMultiply</a>(<span class="keywordtype">int</span> des, <span class="keywordtype">double</span> factor);</div>
+<div class="line"><a id="l00725" name="l00725"></a><span class="lineno">  725</span> </div>
+<div class="line"><a id="l00734" name="l00734"></a><span class="lineno">  734</span>    <span class="keyword">static</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#a68ed82d9eee8720b6403ada60a385403">lrMerge</a>(<a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;left, <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;right);</div>
+<div class="line"><a id="l00735" name="l00735"></a><span class="lineno">  735</span> </div>
+<div class="line"><a id="l00744" name="l00744"></a><span class="lineno">  744</span>    <span class="keyword">static</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#a4740452538c94535df68b9706c5aee79">udMerge</a>(<a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;up, <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;down);</div>
+<div class="line"><a id="l00745" name="l00745"></a><span class="lineno">  745</span> </div>
+<div class="line"><a id="l00757" name="l00757"></a><span class="lineno">  757</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#a38817813326920b6113ba521bac78c31">getBlock</a>(<span class="keywordtype">int</span> startRowId, <span class="keywordtype">int</span> startColId, <span class="keywordtype">int</span> blockRow, <span class="keywordtype">int</span> blockCol) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00758" name="l00758"></a><span class="lineno">  758</span> </div>
+<div class="line"><a id="l00769" name="l00769"></a><span class="lineno">  769</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;<a class="code hl_function" href="classMatrix.html#aa93e118eb820bc3a2e5d797ac7c744c2">setBlock</a>(<span class="keywordtype">int</span> startRowId, <span class="keywordtype">int</span> startColId, <span class="keyword">const</span> <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;block);</div>
+<div class="line"><a id="l00770" name="l00770"></a><span class="lineno">  770</span> </div>
+<div class="line"><a id="l00779" name="l00779"></a><span class="lineno">  779</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#ab51b683b68f6662ab7fa60b4c4e7253b">hessenberg</a>(<a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;Q) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00780" name="l00780"></a><span class="lineno">  780</span> </div>
+<div class="line"><a id="l00788" name="l00788"></a><span class="lineno">  788</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMatrix.html#a0731c5dd536b1b5a1430bd4c07634c94">qrDecom</a>(<a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;Q, <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;R) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00789" name="l00789"></a><span class="lineno">  789</span> </div>
+<div class="line"><a id="l00797" name="l00797"></a><span class="lineno">  797</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> <a class="code hl_function" href="classMatrix.html#ae63b3d4ebc1404e54fe6aefc5388d079">eigen</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00798" name="l00798"></a><span class="lineno">  798</span> </div>
+<div class="line"><a id="l00799" name="l00799"></a><span class="lineno">  799</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00807" name="l00807"></a><span class="lineno">  807</span>    <span class="keyword">static</span> <span class="keywordtype">signed</span> <span class="keywordtype">char</span> sgn(<span class="keywordtype">double</span> num);</div>
+<div class="line"><a id="l00808" name="l00808"></a><span class="lineno">  808</span> </div>
+<div class="line"><a id="l00816" name="l00816"></a><span class="lineno">  816</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> merge(<a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;right) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00817" name="l00817"></a><span class="lineno">  817</span> </div>
+<div class="line"><a id="l00825" name="l00825"></a><span class="lineno">  825</span>    <a class="code hl_class" href="classMatrix.html">Matrix</a> lrDivide(<span class="keywordtype">int</span> col) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00826" name="l00826"></a><span class="lineno">  826</span> </div>
+<div class="line"><a id="l00838" name="l00838"></a><span class="lineno">  838</span>    <span class="keywordtype">bool</span> qrDecom4Hessenberg(<a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;Q, <a class="code hl_class" href="classMatrix.html">Matrix</a> &amp;R) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00839" name="l00839"></a><span class="lineno">  839</span>};</div>
+</div>
+<div class="line"><a id="l00840" name="l00840"></a><span class="lineno">  840</span> </div>
+<div class="line"><a id="l00841" name="l00841"></a><span class="lineno">  841</span><span class="preprocessor">#endif </span><span class="comment">// !_Matrix</span></div>
+<div class="ttc" id="aMatrix_8h_html_a1f79d33234e1d1cb012a5b33a659780b"><div class="ttname"><a href="Matrix_8h.html#a1f79d33234e1d1cb012a5b33a659780b">MatIniLst</a></div><div class="ttdeci">std::initializer_list&lt; double &gt; MatIniLst</div><div class="ttdef"><b>Definition</b> Matrix.h:110</div></div>
+<div class="ttc" id="aclassMatrix_html"><div class="ttname"><a href="classMatrix.html">Matrix</a></div><div class="ttdoc">本类用于进行矩阵的基本计算</div><div class="ttdef"><b>Definition</b> Matrix.h:120</div></div>
+<div class="ttc" id="aclassMatrix_html_a00db858434665cd1e3f6492d466b7729"><div class="ttname"><a href="classMatrix.html#a00db858434665cd1e3f6492d466b7729">Matrix::operator*</a></div><div class="ttdeci">friend Matrix operator*(const Matrix &amp;lMat, const Matrix &amp;rMat)</div><div class="ttdoc">运算符重载，友元函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:357</div></div>
+<div class="ttc" id="aclassMatrix_html_a0731c5dd536b1b5a1430bd4c07634c94"><div class="ttname"><a href="classMatrix.html#a0731c5dd536b1b5a1430bd4c07634c94">Matrix::qrDecom</a></div><div class="ttdeci">void qrDecom(Matrix &amp;Q, Matrix &amp;R) const</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:929</div></div>
+<div class="ttc" id="aclassMatrix_html_a093d2791b0e153bb28f8a798c51893e0"><div class="ttname"><a href="classMatrix.html#a093d2791b0e153bb28f8a798c51893e0">Matrix::rowMultiply</a></div><div class="ttdeci">void rowMultiply(int des, double factor)</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:797</div></div>
+<div class="ttc" id="aclassMatrix_html_a09ef4443ca625f57f49c682f4809e646"><div class="ttname"><a href="classMatrix.html#a09ef4443ca625f57f49c682f4809e646">Matrix::operator!=</a></div><div class="ttdeci">friend bool operator!=(const Matrix &amp;lMat, const Matrix &amp;rMat)</div><div class="ttdoc">运算符重载，友元函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:441</div></div>
+<div class="ttc" id="aclassMatrix_html_a14d2c9d7ebe4c5ada92b840ae86bf58a"><div class="ttname"><a href="classMatrix.html#a14d2c9d7ebe4c5ada92b840ae86bf58a">Matrix::operator==</a></div><div class="ttdeci">friend bool operator==(const Matrix &amp;lMat, const Matrix &amp;rMat)</div><div class="ttdoc">运算符重载，友元函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:429</div></div>
+<div class="ttc" id="aclassMatrix_html_a18aed17a78e2e5f3228a10b1cec620e3"><div class="ttname"><a href="classMatrix.html#a18aed17a78e2e5f3228a10b1cec620e3">Matrix::operator=</a></div><div class="ttdeci">Matrix &amp; operator=(const Matrix &amp;tmp)</div><div class="ttdoc">运算符重载，拷贝赋值函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:313</div></div>
+<div class="ttc" id="aclassMatrix_html_a279d8a40e57d37ad1bf449f1ff200dc3"><div class="ttname"><a href="classMatrix.html#a279d8a40e57d37ad1bf449f1ff200dc3">Matrix::operator[]</a></div><div class="ttdeci">double * operator[](int num)</div><div class="ttdoc">运算符重载</div><div class="ttdef"><b>Definition</b> Matrix.cpp:488</div></div>
+<div class="ttc" id="aclassMatrix_html_a2dba13c45127354c9f75ef576f49269b"><div class="ttname"><a href="classMatrix.html#a2dba13c45127354c9f75ef576f49269b">Matrix::Matrix</a></div><div class="ttdeci">Matrix()</div><div class="ttdoc">无参数构造函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:17</div></div>
+<div class="ttc" id="aclassMatrix_html_a3177598eaebea3960b0ad1477f4774e7"><div class="ttname"><a href="classMatrix.html#a3177598eaebea3960b0ad1477f4774e7">Matrix::setPrecise</a></div><div class="ttdeci">static void setPrecise(int precise)</div><div class="ttdoc">静态函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:242</div></div>
+<div class="ttc" id="aclassMatrix_html_a3516081f3e32d107f91120395c6fbe48"><div class="ttname"><a href="classMatrix.html#a3516081f3e32d107f91120395c6fbe48">Matrix::randMatrix</a></div><div class="ttdeci">static Matrix randMatrix(int n)</div><div class="ttdoc">静态函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:284</div></div>
+<div class="ttc" id="aclassMatrix_html_a38817813326920b6113ba521bac78c31"><div class="ttname"><a href="classMatrix.html#a38817813326920b6113ba521bac78c31">Matrix::getBlock</a></div><div class="ttdeci">Matrix getBlock(int startRowId, int startColId, int blockRow, int blockCol) const</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:836</div></div>
+<div class="ttc" id="aclassMatrix_html_a44efdb518301efd47cbd8e312f898b85"><div class="ttname"><a href="classMatrix.html#a44efdb518301efd47cbd8e312f898b85">Matrix::operator-=</a></div><div class="ttdeci">Matrix &amp; operator-=(const Matrix &amp;tmp)</div><div class="ttdoc">运算符重载</div><div class="ttdef"><b>Definition</b> Matrix.cpp:417</div></div>
+<div class="ttc" id="aclassMatrix_html_a4740452538c94535df68b9706c5aee79"><div class="ttname"><a href="classMatrix.html#a4740452538c94535df68b9706c5aee79">Matrix::udMerge</a></div><div class="ttdeci">static Matrix udMerge(Matrix &amp;up, Matrix &amp;down)</div><div class="ttdoc">静态函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:825</div></div>
+<div class="ttc" id="aclassMatrix_html_a571b16897d52577117c09fc8859361ae"><div class="ttname"><a href="classMatrix.html#a571b16897d52577117c09fc8859361ae">Matrix::getCol</a></div><div class="ttdeci">int getCol() const</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:521</div></div>
+<div class="ttc" id="aclassMatrix_html_a5a86494063d1772320ad0aa6a953dcbf"><div class="ttname"><a href="classMatrix.html#a5a86494063d1772320ad0aa6a953dcbf">Matrix::rowExchange</a></div><div class="ttdeci">bool rowExchange(int des, int src)</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:782</div></div>
+<div class="ttc" id="aclassMatrix_html_a5fbd6301ddf25eadeac695eb71dd8bef"><div class="ttname"><a href="classMatrix.html#a5fbd6301ddf25eadeac695eb71dd8bef">Matrix::isSizeValidity</a></div><div class="ttdeci">bool isSizeValidity()</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:740</div></div>
+<div class="ttc" id="aclassMatrix_html_a6583fc8ff85afe7a7469167bf572d6e6"><div class="ttname"><a href="classMatrix.html#a6583fc8ff85afe7a7469167bf572d6e6">Matrix::zeros</a></div><div class="ttdeci">static Matrix zeros(int row)</div><div class="ttdoc">静态函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:217</div></div>
+<div class="ttc" id="aclassMatrix_html_a670ca24c842b801a9bf180d36a4feb32"><div class="ttname"><a href="classMatrix.html#a670ca24c842b801a9bf180d36a4feb32">Matrix::det</a></div><div class="ttdeci">bool det(double &amp;result) const</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:614</div></div>
+<div class="ttc" id="aclassMatrix_html_a68ed82d9eee8720b6403ada60a385403"><div class="ttname"><a href="classMatrix.html#a68ed82d9eee8720b6403ada60a385403">Matrix::lrMerge</a></div><div class="ttdeci">static Matrix lrMerge(Matrix &amp;left, Matrix &amp;right)</div><div class="ttdoc">静态函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:806</div></div>
+<div class="ttc" id="aclassMatrix_html_a6b7b02ed112b0cc140a2d401583bedd7"><div class="ttname"><a href="classMatrix.html#a6b7b02ed112b0cc140a2d401583bedd7">Matrix::eye</a></div><div class="ttdeci">static Matrix eye(int row)</div><div class="ttdoc">静态函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:151</div></div>
+<div class="ttc" id="aclassMatrix_html_a737c44f59fa04bb2ac2dab1c27e2d334"><div class="ttname"><a href="classMatrix.html#a737c44f59fa04bb2ac2dab1c27e2d334">Matrix::operator/</a></div><div class="ttdeci">friend Matrix operator/(const Matrix &amp;lMat, const Matrix &amp;rMat)</div><div class="ttdoc">运算符重载,友元函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:372</div></div>
+<div class="ttc" id="aclassMatrix_html_a759661b75b9681f3a89ff75e27933b3a"><div class="ttname"><a href="classMatrix.html#a759661b75b9681f3a89ff75e27933b3a">Matrix::transpose</a></div><div class="ttdeci">Matrix transpose() const</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:600</div></div>
+<div class="ttc" id="aclassMatrix_html_a7bc7cd9c102ed386031548e6e48ece06"><div class="ttname"><a href="classMatrix.html#a7bc7cd9c102ed386031548e6e48ece06">Matrix::ones</a></div><div class="ttdeci">static Matrix ones(int row)</div><div class="ttdoc">静态函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:184</div></div>
+<div class="ttc" id="aclassMatrix_html_a8212085421a48678480922425741cf5b"><div class="ttname"><a href="classMatrix.html#a8212085421a48678480922425741cf5b">Matrix::sMultiple</a></div><div class="ttdeci">Matrix sMultiple(const double &amp;factor) const</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:562</div></div>
+<div class="ttc" id="aclassMatrix_html_a83ed19acccb95e8286e14fb4790bdb49"><div class="ttname"><a href="classMatrix.html#a83ed19acccb95e8286e14fb4790bdb49">Matrix::isEmptyMatrix</a></div><div class="ttdeci">bool isEmptyMatrix() const</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:763</div></div>
+<div class="ttc" id="aclassMatrix_html_a8507366342ab66e74b5a14226bf99791"><div class="ttname"><a href="classMatrix.html#a8507366342ab66e74b5a14226bf99791">Matrix::operator++</a></div><div class="ttdeci">Matrix &amp; operator++()</div><div class="ttdoc">运算符重载</div><div class="ttdef"><b>Definition</b> Matrix.cpp:457</div></div>
+<div class="ttc" id="aclassMatrix_html_a9678b7b87ba0ea8759a959a02ec3db50"><div class="ttname"><a href="classMatrix.html#a9678b7b87ba0ea8759a959a02ec3db50">Matrix::operator-</a></div><div class="ttdeci">friend Matrix operator-(const Matrix &amp;lMat, const Matrix &amp;rMat)</div><div class="ttdoc">运算符重载，友元函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:352</div></div>
+<div class="ttc" id="aclassMatrix_html_a98eb1cd4108872fc8e83f406c4542f92"><div class="ttname"><a href="classMatrix.html#a98eb1cd4108872fc8e83f406c4542f92">Matrix::diag</a></div><div class="ttdeci">static Matrix diag(Matrix mat)</div><div class="ttdoc">静态函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:248</div></div>
+<div class="ttc" id="aclassMatrix_html_a9918471e9d62634a54677a9244187425"><div class="ttname"><a href="classMatrix.html#a9918471e9d62634a54677a9244187425">Matrix::sub</a></div><div class="ttdeci">Matrix sub(const Matrix &amp;tmp) const</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:545</div></div>
+<div class="ttc" id="aclassMatrix_html_a9b1c3627f573d78a2f08623fdfef990f"><div class="ttname"><a href="classMatrix.html#a9b1c3627f573d78a2f08623fdfef990f">Matrix::~Matrix</a></div><div class="ttdeci">~Matrix()</div><div class="ttdoc">析构函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:140</div></div>
+<div class="ttc" id="aclassMatrix_html_aa1062ff51c888295a0c3d30c4318f717"><div class="ttname"><a href="classMatrix.html#aa1062ff51c888295a0c3d30c4318f717">Matrix::add</a></div><div class="ttdeci">Matrix add(const Matrix &amp;tmp) const</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:527</div></div>
+<div class="ttc" id="aclassMatrix_html_aa93e118eb820bc3a2e5d797ac7c744c2"><div class="ttname"><a href="classMatrix.html#aa93e118eb820bc3a2e5d797ac7c744c2">Matrix::setBlock</a></div><div class="ttdeci">Matrix &amp; setBlock(int startRowId, int startColId, const Matrix &amp;block)</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:857</div></div>
+<div class="ttc" id="aclassMatrix_html_aab07edad1c28dbd2b521bf195d33cb06"><div class="ttname"><a href="classMatrix.html#aab07edad1c28dbd2b521bf195d33cb06">Matrix::inverse</a></div><div class="ttdeci">Matrix inverse() const</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:727</div></div>
+<div class="ttc" id="aclassMatrix_html_aaf73e11159a4e122158da47036b59f2f"><div class="ttname"><a href="classMatrix.html#aaf73e11159a4e122158da47036b59f2f">Matrix::operator+=</a></div><div class="ttdeci">Matrix &amp; operator+=(const Matrix &amp;tmp)</div><div class="ttdoc">运算符重载</div><div class="ttdef"><b>Definition</b> Matrix.cpp:406</div></div>
+<div class="ttc" id="aclassMatrix_html_ab51b683b68f6662ab7fa60b4c4e7253b"><div class="ttname"><a href="classMatrix.html#ab51b683b68f6662ab7fa60b4c4e7253b">Matrix::hessenberg</a></div><div class="ttdeci">Matrix hessenberg(Matrix &amp;Q) const</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:878</div></div>
+<div class="ttc" id="aclassMatrix_html_acdab13b4e7c35c4e0928f5cffd6b1555"><div class="ttname"><a href="classMatrix.html#acdab13b4e7c35c4e0928f5cffd6b1555">Matrix::rMultiple</a></div><div class="ttdeci">Matrix rMultiple(const Matrix &amp;tmp) const</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:573</div></div>
+<div class="ttc" id="aclassMatrix_html_acf5f93080de2ecac0c4a6052dbafbc78"><div class="ttname"><a href="classMatrix.html#acf5f93080de2ecac0c4a6052dbafbc78">Matrix::isSquareMatrix</a></div><div class="ttdeci">bool isSquareMatrix() const</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:757</div></div>
+<div class="ttc" id="aclassMatrix_html_ad408cd4553ebed67bfd3fd5cc17f8423"><div class="ttname"><a href="classMatrix.html#ad408cd4553ebed67bfd3fd5cc17f8423">Matrix::operator--</a></div><div class="ttdeci">Matrix &amp; operator--()</div><div class="ttdoc">运算符重载</div><div class="ttdef"><b>Definition</b> Matrix.cpp:469</div></div>
+<div class="ttc" id="aclassMatrix_html_ad535a849cdfdc6cc7b9ab22b7f38fe39"><div class="ttname"><a href="classMatrix.html#ad535a849cdfdc6cc7b9ab22b7f38fe39">Matrix::rowAdd</a></div><div class="ttdeci">void rowAdd(int des, int src, double factor)</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:773</div></div>
+<div class="ttc" id="aclassMatrix_html_ad6dfe60dd9c40768e38815c93a9e628c"><div class="ttname"><a href="classMatrix.html#ad6dfe60dd9c40768e38815c93a9e628c">Matrix::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, const Matrix &amp;tmp)</div><div class="ttdoc">运算符重载,友元函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:498</div></div>
+<div class="ttc" id="aclassMatrix_html_ad77d75eeabdd848444d16f6a8919842b"><div class="ttname"><a href="classMatrix.html#ad77d75eeabdd848444d16f6a8919842b">Matrix::gauss</a></div><div class="ttdeci">Matrix gauss() const</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:660</div></div>
+<div class="ttc" id="aclassMatrix_html_ad99a61a00ac4ba17020a49f358a69ee6"><div class="ttname"><a href="classMatrix.html#ad99a61a00ac4ba17020a49f358a69ee6">Matrix::rank</a></div><div class="ttdeci">int rank() const</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:710</div></div>
+<div class="ttc" id="aclassMatrix_html_ae63b3d4ebc1404e54fe6aefc5388d079"><div class="ttname"><a href="classMatrix.html#ae63b3d4ebc1404e54fe6aefc5388d079">Matrix::eigen</a></div><div class="ttdeci">Matrix eigen() const</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:976</div></div>
+<div class="ttc" id="aclassMatrix_html_ae695751b0e1e6d2876842e0636b18ca3"><div class="ttname"><a href="classMatrix.html#ae695751b0e1e6d2876842e0636b18ca3">Matrix::getRow</a></div><div class="ttdeci">int getRow() const</div><div class="ttdoc">公有函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:516</div></div>
+<div class="ttc" id="aclassMatrix_html_aef1379198cd8d8fafb15efa18ca9e18c"><div class="ttname"><a href="classMatrix.html#aef1379198cd8d8fafb15efa18ca9e18c">Matrix::operator+</a></div><div class="ttdeci">friend Matrix operator+(const Matrix &amp;lMat, const Matrix &amp;rMat)</div><div class="ttdoc">运算符重载，友元函数</div><div class="ttdef"><b>Definition</b> Matrix.cpp:347</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d60f6684020cb105011de41729268593.html">Matrix</a></li><li class="navelem"><a class="el" href="Matrix_8h.html">Matrix.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>
