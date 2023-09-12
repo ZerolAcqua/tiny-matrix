@@ -1,6 +1,6 @@
 # tiny-matrix
 
-[![Doxygen Action](https://github.com/ZerolAcqua/tiny-matrix/actions/workflows/doxygen-doc.yml/badge.svg)](https://github.com/ZerolAcqua/tiny-matrix/actions/workflows/doxygen-doc.yml)
+[![Doxygen Docs](https://github.com/ZerolAcqua/tiny-matrix/actions/workflows/doxygen-docs.yml/badge.svg)](https://github.com/ZerolAcqua/tiny-matrix/actions/workflows/doxygen-docs.yml)
 
 ## Introduction
 
