@@ -19,7 +19,6 @@ jobs:
     strategy:
       matrix:
         float-precision: [2]
-
     steps:
       - uses: actions/checkout@v2
       - uses: ilammy/msvc-dev-cmd@v1
