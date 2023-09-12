@@ -25,40 +25,22 @@
 var NAVTREE =
 [
   [ "tiny-matrix", "index.html", [
-    [ "tiny-matrix", "md_readme.html", [
-      [ "Introduction", "md_readme.html#autotoc_md8", null ],
-      [ "contents", "md_readme.html#autotoc_md10", null ]
-    ] ],
-    [ "命名空间", "namespaces.html", [
-      [ "命名空间列表", "namespaces.html", "namespaces_dup" ],
-      [ "命名空间成员", "namespacemembers.html", [
-        [ "全部", "namespacemembers.html", null ],
-        [ "函数", "namespacemembers_func.html", null ],
-        [ "变量", "namespacemembers_vars.html", null ],
-        [ "类型定义", "namespacemembers_type.html", null ]
-      ] ]
-    ] ],
     [ "类", "annotated.html", [
       [ "类列表", "annotated.html", "annotated_dup" ],
       [ "类索引", "classes.html", null ],
-      [ "类继承关系", "hierarchy.html", "hierarchy" ],
       [ "类成员", "functions.html", [
-        [ "全部", "functions.html", "functions_dup" ],
-        [ "函数", "functions_func.html", "functions_func" ],
-        [ "变量", "functions_vars.html", null ],
-        [ "类型定义", "functions_type.html", null ],
-        [ "枚举", "functions_enum.html", null ],
-        [ "枚举值", "functions_eval.html", null ],
+        [ "全部", "functions.html", null ],
+        [ "函数", "functions_func.html", null ],
         [ "相关函数", "functions_rela.html", null ]
       ] ]
     ] ],
     [ "文件", "files.html", [
       [ "文件列表", "files.html", "files_dup" ],
       [ "文件成员", "globals.html", [
-        [ "全部", "globals.html", "globals_dup" ],
+        [ "全部", "globals.html", null ],
         [ "函数", "globals_func.html", null ],
         [ "类型定义", "globals_type.html", null ],
-        [ "宏定义", "globals_defs.html", "globals_defs" ]
+        [ "宏定义", "globals_defs.html", null ]
       ] ]
     ] ]
   ] ]
@@ -66,13 +48,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"Matrix_8cpp.html",
-"catch_8hpp.html#abedd1ae08e12478704233e9bf29e0fe9",
-"classCatch_1_1Generators_1_1FixedValuesGenerator.html#a6ce9e3ed045239c7b82873f24bd9cd3b",
-"classMatrix.html#a2dba13c45127354c9f75ef576f49269b",
-"namespaceCatch_1_1Matchers_1_1Impl.html",
-"structCatch_1_1Matchers_1_1Impl_1_1MatchAllOf.html#acfb377bda2c58ae62e6df9c3a8a89f8f",
-"structCatch_1_1StringMaker_3_01signed_01char_01_4.html"
+"Matrix_8cpp.html"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';

@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['data_0',['data',['../classCatch_1_1StringRef.html#ab0f85edde9f97153fc758fac3bb14507',1,'Catch::StringRef']]],
-  ['delta_1',['delta',['../structCatch_1_1Totals.html#a1a94a654f5f3786b75695e081fc9bca2',1,'Catch::Totals']]],
-  ['describe_2',['describe',['../classCatch_1_1Matchers_1_1Impl_1_1MatcherUntypedBase.html#a91d3a907dbfcbb596077df24f6e11fe2',1,'Catch::Matchers::Impl::MatcherUntypedBase::describe()'],['../structCatch_1_1Matchers_1_1Impl_1_1MatchAllOf.html#acbb9a083e93b546fd33c9235b644c40f',1,'Catch::Matchers::Impl::MatchAllOf::describe()'],['../structCatch_1_1Matchers_1_1Impl_1_1MatchAnyOf.html#a315285204df93d1f8e72f50dd66eb709',1,'Catch::Matchers::Impl::MatchAnyOf::describe()'],['../structCatch_1_1Matchers_1_1Impl_1_1MatchNotOf.html#ac5fb4ef6a9069d23a4098c3c818f06b0',1,'Catch::Matchers::Impl::MatchNotOf::describe()'],['../classCatch_1_1Matchers_1_1Exception_1_1ExceptionMessageMatcher.html#a3543441985ec877a781e660a403b1bae',1,'Catch::Matchers::Exception::ExceptionMessageMatcher::describe()'],['../structCatch_1_1Matchers_1_1Floating_1_1WithinAbsMatcher.html#a206a738680f8767af31d3f1835afff3f',1,'Catch::Matchers::Floating::WithinAbsMatcher::describe()'],['../structCatch_1_1Matchers_1_1Floating_1_1WithinUlpsMatcher.html#ad9bc8bb7f3abd326580a4bf6cf369b1b',1,'Catch::Matchers::Floating::WithinUlpsMatcher::describe()'],['../structCatch_1_1Matchers_1_1Floating_1_1WithinRelMatcher.html#aeabbf5394d7dafebe874fef8a959fe8a',1,'Catch::Matchers::Floating::WithinRelMatcher::describe()'],['../structCatch_1_1Matchers_1_1StdString_1_1StringMatcherBase.html#a47af030f8cea42a601ffb1000eea5cca',1,'Catch::Matchers::StdString::StringMatcherBase::describe()'],['../structCatch_1_1Matchers_1_1StdString_1_1RegexMatcher.html#a1f788cd5258c987e5043f6c7f43adeb9',1,'Catch::Matchers::StdString::RegexMatcher::describe()']]],
-  ['det_3',['det',['../classMatrix.html#a670ca24c842b801a9bf180d36a4feb32',1,'Matrix']]],
-  ['diag_4',['diag',['../classMatrix.html#a98eb1cd4108872fc8e83f406c4542f92',1,'Matrix']]],
-  ['discard_5',['discard',['../classCatch_1_1SimplePcg32.html#a877e7a9c14d378af729ad19a0e959178',1,'Catch::SimplePcg32']]]
+  ['gauss_0',['gauss',['../classMatrix.html#ad77d75eeabdd848444d16f6a8919842b',1,'Matrix']]],
+  ['getblock_1',['getBlock',['../classMatrix.html#a38817813326920b6113ba521bac78c31',1,'Matrix']]],
+  ['getcol_2',['getCol',['../classMatrix.html#a571b16897d52577117c09fc8859361ae',1,'Matrix']]],
+  ['getrow_3',['getRow',['../classMatrix.html#ae695751b0e1e6d2876842e0636b18ca3',1,'Matrix']]]
 ];

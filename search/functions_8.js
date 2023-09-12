@@ -1,16 +1,17 @@
 var searchData=
 [
-  ['inverse_0',['inverse',['../classMatrix.html#aab07edad1c28dbd2b521bf195d33cb06',1,'Matrix']]],
-  ['invoke_1',['invoke',['../structCatch_1_1ITestInvoker.html#a6fcd5c5b67d6d5ade6491ff33411ca7f',1,'Catch::ITestInvoker::invoke()'],['../classCatch_1_1TestInvokerAsMethod.html#a8115a06efe273f4112ec0b5452c1b5f2',1,'Catch::TestInvokerAsMethod::invoke()'],['../classCatch_1_1TestCase.html#a26f346c8446dded0562fe3818ae71651',1,'Catch::TestCase::invoke()']]],
-  ['isbinaryexpression_2',['isBinaryExpression',['../structCatch_1_1ITransientExpression.html#a3b436e13a0a6d3522bbf70d4e31deb22',1,'Catch::ITransientExpression']]],
-  ['isemptymatrix_3',['isEmptyMatrix',['../classMatrix.html#a83ed19acccb95e8286e14fb4790bdb49',1,'Matrix']]],
-  ['isfalsetest_4',['isFalseTest',['../namespaceCatch.html#a93ef4e3e307a2021ca0d41b32c0e54b0',1,'Catch']]],
-  ['ishidden_5',['isHidden',['../structCatch_1_1TestCaseInfo.html#a934b1a0952700743e99d62ec1731a2e2',1,'Catch::TestCaseInfo']]],
-  ['isjustinfo_6',['isJustInfo',['../namespaceCatch.html#a54b01af61673a3e1f21f31713639b180',1,'Catch']]],
-  ['isnullterminated_7',['isNullTerminated',['../classCatch_1_1StringRef.html#a646e58f5f4e1f5e82cfba06d9fd5d016',1,'Catch::StringRef']]],
-  ['isok_8',['isOk',['../namespaceCatch.html#a5205869c81c06d3460759cb86676ae68',1,'Catch']]],
-  ['issizevalidity_9',['isSizeValidity',['../classMatrix.html#a5fbd6301ddf25eadeac695eb71dd8bef',1,'Matrix']]],
-  ['issquarematrix_10',['isSquareMatrix',['../classMatrix.html#acf5f93080de2ecac0c4a6052dbafbc78',1,'Matrix']]],
-  ['isthrowsafe_11',['isThrowSafe',['../namespaceCatch.html#af3e820574c7a0b38d71328c5bd54b0e0',1,'Catch']]],
-  ['itransientexpression_12',['ITransientExpression',['../structCatch_1_1ITransientExpression.html#aafe69572b7ed884e63ec81f58d4afd8c',1,'Catch::ITransientExpression']]]
+  ['ones_0',['ones',['../classMatrix.html#a380fc868a85cb3a755265ea05def8749',1,'Matrix::ones(int row, int col)'],['../classMatrix.html#a7bc7cd9c102ed386031548e6e48ece06',1,'Matrix::ones(int row)']]],
+  ['operator_21_3d_1',['operator!=',['../Matrix_8cpp.html#a09ef4443ca625f57f49c682f4809e646',1,'Matrix.cpp']]],
+  ['operator_2a_2',['operator*',['../Matrix_8cpp.html#a00db858434665cd1e3f6492d466b7729',1,'operator*(const Matrix &amp;lMat, const Matrix &amp;rMat):&#160;Matrix.cpp'],['../Matrix_8cpp.html#a2fa2c5dd5baf1a5c8842a46d391a04ff',1,'operator*(const Matrix &amp;lMat, const double &amp;rFactor):&#160;Matrix.cpp'],['../Matrix_8cpp.html#a1fc869fe0d12c145f59d47d308a19bf7',1,'operator*(const double &amp;lFactor, const Matrix &amp;rMat):&#160;Matrix.cpp']]],
+  ['operator_2b_3',['operator+',['../Matrix_8cpp.html#a0cf3048e1d36dce5d8a5ae979f714d72',1,'operator+(const Matrix &amp;Mat):&#160;Matrix.cpp'],['../Matrix_8cpp.html#ac2259524db41ba19db3237471f16c1c2',1,'operator+(const double &amp;lNum, const Matrix &amp;rMat):&#160;Matrix.cpp'],['../Matrix_8cpp.html#a30028826b7c0b7bd81133368f5c57954',1,'operator+(const Matrix &amp;lMat, const double &amp;rNum):&#160;Matrix.cpp'],['../Matrix_8cpp.html#aef1379198cd8d8fafb15efa18ca9e18c',1,'operator+(const Matrix &amp;lMat, const Matrix &amp;rMat):&#160;Matrix.cpp']]],
+  ['operator_2b_2b_4',['operator++',['../classMatrix.html#ae1259ca15cb84a77f5db0ad8c93f1a4d',1,'Matrix::operator++(int)'],['../classMatrix.html#a8507366342ab66e74b5a14226bf99791',1,'Matrix::operator++()']]],
+  ['operator_2b_3d_5',['operator+=',['../classMatrix.html#a0c3bf5d1197267ef97d2ca02bcd87d1c',1,'Matrix::operator+=(const double &amp;num)'],['../classMatrix.html#aaf73e11159a4e122158da47036b59f2f',1,'Matrix::operator+=(const Matrix &amp;tmp)']]],
+  ['operator_2d_6',['operator-',['../Matrix_8cpp.html#a443e399b244090d5d912a25e488874c2',1,'operator-(const Matrix &amp;Mat):&#160;Matrix.cpp'],['../Matrix_8cpp.html#ab6737520e59dae1086e97b68b172575e',1,'operator-(const double &amp;lNum, const Matrix &amp;rMat):&#160;Matrix.cpp'],['../Matrix_8cpp.html#ae74437d3f43befc072d7d9b08bbcd5b7',1,'operator-(const Matrix &amp;lMat, const double &amp;rNum):&#160;Matrix.cpp'],['../Matrix_8cpp.html#a9678b7b87ba0ea8759a959a02ec3db50',1,'operator-(const Matrix &amp;lMat, const Matrix &amp;rMat):&#160;Matrix.cpp']]],
+  ['operator_2d_2d_7',['operator--',['../classMatrix.html#aee70f1fff13220c9f7043a9a4965f327',1,'Matrix::operator--(int)'],['../classMatrix.html#ad408cd4553ebed67bfd3fd5cc17f8423',1,'Matrix::operator--()']]],
+  ['operator_2d_3d_8',['operator-=',['../classMatrix.html#a2341f005595566f0788575476efaf538',1,'Matrix::operator-=(const double &amp;num)'],['../classMatrix.html#a44efdb518301efd47cbd8e312f898b85',1,'Matrix::operator-=(const Matrix &amp;tmp)']]],
+  ['operator_2f_9',['operator/',['../Matrix_8cpp.html#a737c44f59fa04bb2ac2dab1c27e2d334',1,'operator/(const Matrix &amp;lMat, const Matrix &amp;rMat):&#160;Matrix.cpp'],['../Matrix_8cpp.html#af7e5fe7e7d6e2ae9a5faaf40de11e9a5',1,'operator/(const double &amp;lFactor, const Matrix &amp;rMat):&#160;Matrix.cpp'],['../Matrix_8cpp.html#a743b72af0b707615a616c0bc6ed9070e',1,'operator/(const Matrix &amp;lMat, const double &amp;rFactor):&#160;Matrix.cpp']]],
+  ['operator_3c_3c_10',['operator&lt;&lt;',['../Matrix_8cpp.html#ad6dfe60dd9c40768e38815c93a9e628c',1,'Matrix.cpp']]],
+  ['operator_3d_11',['operator=',['../classMatrix.html#ae2428e5d28f8d7857db5aab3613086df',1,'Matrix::operator=(Matrix &amp;&amp;tmp) noexcept'],['../classMatrix.html#a18aed17a78e2e5f3228a10b1cec620e3',1,'Matrix::operator=(const Matrix &amp;tmp)']]],
+  ['operator_3d_3d_12',['operator==',['../Matrix_8cpp.html#a14d2c9d7ebe4c5ada92b840ae86bf58a',1,'Matrix.cpp']]],
+  ['operator_5b_5d_13',['operator[]',['../classMatrix.html#a71baf5f0144b4d03e1444ac626526d58',1,'Matrix::operator[](int num) const'],['../classMatrix.html#a279d8a40e57d37ad1bf449f1ff200dc3',1,'Matrix::operator[](int num)']]]
 ];

@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['filter_0',['filter',['../namespaceCatch_1_1Generators.html#a4df89be8072a9685ee89b6776a54bb93',1,'Catch::Generators']]],
-  ['filtergenerator_1',['FilterGenerator',['../classCatch_1_1Generators_1_1FilterGenerator.html#aa16886a5e41cbd3b6ffa3dd52388a3a1',1,'Catch::Generators::FilterGenerator']]],
-  ['filtertests_2',['filterTests',['../namespaceCatch.html#a105d5acdec8a6b401e12a592557c9dd1',1,'Catch']]],
-  ['fixedvaluesgenerator_3',['FixedValuesGenerator',['../classCatch_1_1Generators_1_1FixedValuesGenerator.html#a6e9f473655413c1cb15f079890f06b86',1,'Catch::Generators::FixedValuesGenerator']]],
-  ['formatreconstructedexpression_4',['formatReconstructedExpression',['../namespaceCatch.html#a520110c31f26cf9892595772ab814fc0',1,'Catch']]]
+  ['inverse_0',['inverse',['../classMatrix.html#aab07edad1c28dbd2b521bf195d33cb06',1,'Matrix']]],
+  ['isemptymatrix_1',['isEmptyMatrix',['../classMatrix.html#a83ed19acccb95e8286e14fb4790bdb49',1,'Matrix']]],
+  ['issizevalidity_2',['isSizeValidity',['../classMatrix.html#a5fbd6301ddf25eadeac695eb71dd8bef',1,'Matrix']]],
+  ['issquarematrix_3',['isSquareMatrix',['../classMatrix.html#acf5f93080de2ecac0c4a6052dbafbc78',1,'Matrix']]]
 ];
