@@ -38,8 +38,8 @@ jobs:
         working-directory: build_dir
 
       - name: run test
-        run: test.exe
-        working-directory: build_dir/Debug
+        run: ./build_dir/Debug/test.exe
+        # working-directory: 
         
   # This workflow contains a single job called "build"
   build-docs:
