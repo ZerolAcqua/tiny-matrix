@@ -3,8 +3,6 @@
 
 #include "catch.hpp"
 
-// #define _MATRIX_DEBUG
-
 using namespace std;
 
 TEST_CASE("equal and copy construction/assignment", "[special functions]")
