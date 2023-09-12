@@ -16,6 +16,8 @@ TEST_CASE("equal and copy construction/assignment", "[special functions]")
 
   SECTION("empty matrix")
   {
+    A = Matrix();
+    B = Matrix();
     REQUIRE(A == B);
     REQUIRE((A.getCol() == 0 && A.getRow() == 0));
   }
@@ -71,6 +73,7 @@ TEST_CASE("move construction/assignment", "[special functions]")
   SECTION("move construction")
   {
     A = tmpMatrix;
+    B = Matrix();
     Matrix C = std::move(A);
     REQUIRE(C == tmpMatrix);
     REQUIRE(A == B);
@@ -79,6 +82,7 @@ TEST_CASE("move construction/assignment", "[special functions]")
   SECTION("move assignment")
   {
     Matrix C = Matrix();
+    B = Matrix();
     A = tmpMatrix;
     C = std::move(A);
     REQUIRE(C == tmpMatrix);
@@ -86,13 +90,44 @@ TEST_CASE("move construction/assignment", "[special functions]")
   }
 }
 
+TEST_CASE("static function", "[static function]")
+{
+}
 
-// 	//转置+移动构造
-// 	Matrix C = A.transpose();
-// 	cout << C << endl;
-// 	//求逆+移动赋值
-// 	B = A.inverse();
-// 	cout << B << endl;
+TEST_CASE("matrix operation", "[arithmetic functions]")
+{
+}
+
+TEST_CASE("matrix-related functions", "[basic functions]")
+{
+  SECTION("transpose")
+  {
+    Matrix A = Matrix({{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
+    Matrix B = Matrix();
+    REQUIRE(A.transpose() == Matrix({{1, 4, 7}, {2, 5, 8}, {3, 6, 9}}));
+    REQUIRE(A.transpose().transpose() == A);
+
+    REQUIRE(B.transpose() == B);
+  }
+
+  SECTION("inverse")
+  {
+    Matrix invertibleMat = Matrix({{1, 2, 3}, {4, 5, 5}, {7, 8, 11}});
+    Matrix emptyMat = Matrix();
+    Matrix uninvertibleMat = Matrix({{1, 2, 3}, {1, 2, 3}, {7, 8, 9}});
+
+    REQUIRE(invertibleMat.inverse() != emptyMat);
+    REQUIRE(invertibleMat.inverse().inverse() == invertibleMat);
+    REQUIRE(invertibleMat * invertibleMat.inverse() == Matrix::eye(3));
+    REQUIRE(invertibleMat.inverse().transpose() == invertibleMat.transpose().inverse());
+
+    REQUIRE(emptyMat.transpose() == emptyMat);
+
+    REQUIRE(invertibleMat / invertibleMat == Matrix::eye(3));
+    REQUIRE(uninvertibleMat / invertibleMat == uninvertibleMat * invertibleMat.inverse());
+    REQUIRE(uninvertibleMat / uninvertibleMat == Matrix());
+  }
+}
 
 // 	//除法
 // 	cout << "/" << endl;
@@ -144,13 +179,11 @@ TEST_CASE("move construction/assignment", "[special functions]")
 // 	cout << I.setBlock(0, 1, Matrix::eye(2, 2)) << endl;
 // 	cout << I.setBlock(0, 0, Matrix({ 3,4,5 })) << endl;
 
-
 // 	//Matrix diag = { 1,2,3,4 };
 // 	//cout << diag << Matrix::diag(diag) << Matrix::diag(diag.transpose()) << endl;
 // 	//Matrix A = { {1,2,3,4},{5,6,7,8},{9,10,11,12} };
 // 	//Matrix B = { {43,32,1},{5,3,8},{9,10,11},{3,0,0} };
 // 	//cout << A << Matrix::diag(A) << B << Matrix::diag(B) << endl;
-
 
 TEST_CASE("Hessenberg, QR decomposition and eigen value", "[eigen value]")
 {
@@ -158,9 +191,9 @@ TEST_CASE("Hessenberg, QR decomposition and eigen value", "[eigen value]")
                     {2, 2, -1, 1},
                     {1, -1, 1, 1},
                     {2, 1, 1, 1}};
-  const Matrix B = { {1, -1, 1},
-                     {1, 3, -1},
-                     {1, 1, 1} };
+  const Matrix B = {{1, -1, 1},
+                    {1, 3, -1},
+                    {1, 1, 1}};
 
   SECTION("Hessenberg")
   {
@@ -181,9 +214,6 @@ TEST_CASE("Hessenberg, QR decomposition and eigen value", "[eigen value]")
   SECTION("eigen value")
   {
     Matrix E = B.eigen();
-    REQUIRE(Matrix::diag(E)==Matrix::diag({1,2,2}));
+    REQUIRE(Matrix::diag(E) == Matrix::diag({1, 2, 2}));
   }
 }
-
-
-

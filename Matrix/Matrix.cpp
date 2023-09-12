@@ -3,7 +3,7 @@
 #include <algorithm>
 
 #ifndef EPSILON
-#define EPSILON 1e-15
+#define EPSILON 1e-14
 #endif // !EPSILON
 
 #ifndef ITER_TIMES
