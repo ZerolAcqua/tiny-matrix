@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI Action
+name: Unit Test
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -38,29 +38,34 @@ jobs:
 
       - name: run test
         run: ./build_dir/Debug/test.exe
-        # working-directory: 
-        
-  # This workflow contains a single job called "build"
-  build-docs:
-    needs: windows-unit-test
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+        # working-directory:
+  macos-unit-test:
+    name: Unit tests on macOS
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        float-precision: [2]
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Doxygen Action
-        uses: mattnotmitt/doxygen-action@v1.1.0
-        with:
-          # Path to Doxyfile
-          doxyfile-path: "./Matrix/Doxyfile" # default is ./Doxyfile
-          # Working directory
-          working-directory: "." # default is .
+      - name: cmake configure
+        run: cmake .
+      - name: cmake build
+        run: cmake --build .
+      - name: run test
+        run: ./test
+  linux-unit-test:
+    name: Unit tests on Linux
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        float-precision: [2]
+    steps:
+      - uses: actions/checkout@v2
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./html
+      - name: cmake configure
+        run: cmake .
+      - name: cmake build
+        run: cmake --build .
+      - name: run test
+        run: ./test
