@@ -29,7 +29,7 @@ jobs:
 
       - name: cmake configure
         shell: cmd
-        run: cmake ..
+        run: cmake .. -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=Debug -DFLOAT_PRECISION=${{ matrix.float-precision }}
         working-directory: build_dir
 
       - name: cmake build
