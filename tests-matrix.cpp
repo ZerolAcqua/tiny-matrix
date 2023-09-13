@@ -16,7 +16,7 @@ TEST_CASE("equal and copy construction/assignment", "[special functions]")
   {
     A = Matrix();
     B = Matrix();
-    REQUIRE(A != B);
+    REQUIRE(A == B);
     REQUIRE((A.getCol() == 0 && A.getRow() == 0));
   }
 
