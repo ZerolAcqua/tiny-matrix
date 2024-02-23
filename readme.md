@@ -8,11 +8,18 @@
 
 **tiny-matrix** is a simple matrix class designed for adjustment computations, equipped with basic operations and functions.
 
+
+<details open="open">
+<summary>Table of Contents</summary>
+
 - [Getting started](#getting-started)
-
 - [Contributing](#contributing)
-
 - [License](#license)
+
+</details>
+
+
+
 
 
 ## Getting started

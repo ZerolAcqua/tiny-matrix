@@ -25,20 +25,20 @@ jobs:
 
       - name: make build directory
         shell: cmd
-        run: mkdir build_dir
+        run: mkdir build
 
       - name: cmake configure
         shell: cmd
         run: cmake ..
-        working-directory: build_dir
+        working-directory: build
 
       - name: cmake build
         run: cmake --build .
-        working-directory: build_dir
+        working-directory: build
 
       - name: run test
-        run: ./build_dir/Debug/test.exe
-        # working-directory:
+        run: ctest
+        working-directory: build
   macos-unit-test:
     name: Unit tests on macOS
     runs-on: macos-latest
@@ -48,12 +48,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: create build directory
+        run: mkdir build
       - name: cmake configure
-        run: cmake .
+        run: /
+          cd build
+          cmake ..
       - name: cmake build
-        run: cmake --build .
+        run: /
+          cd build
+          cmake --build .
       - name: run test
-        run: ./test
+        run: |
+          cd build
+          ctest
   linux-unit-test:
     name: Unit tests on Linux
     runs-on: ubuntu-latest
@@ -63,9 +71,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: create build directory
+        run: mkdir build
       - name: cmake configure
-        run: cmake .
+        run: /
+          cd build
+          cmake ..
       - name: cmake build
-        run: cmake --build .
+        run: /
+          cd build
+          cmake --build .
       - name: run test
-        run: ./test
+        run: |
+          cd build
+          ctest

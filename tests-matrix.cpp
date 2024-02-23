@@ -5,6 +5,14 @@
 
 using namespace std;
 
+TEST_CASE("default construction", "[construction]")
+{
+  Matrix A = Matrix();
+  REQUIRE(A.getCol() == 0);
+  REQUIRE(A.getRow() == 0);
+  // Todo
+}
+
 TEST_CASE("equal and copy construction/assignment", "[special functions]")
 {
   Matrix A = Matrix();
@@ -90,20 +98,90 @@ TEST_CASE("move construction/assignment", "[special functions]")
 
 TEST_CASE("static function", "[static function]")
 {
+  Matrix emptyMat = Matrix();
   SECTION("eye")
   {
-    Matrix A = Matrix::eye(3);
-    Matrix B = Matrix::eye(0);
-    Matrix C = Matrix::eye(-1);
+    Matrix eye3 = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
+    Matrix eye34 = {{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 1, 0}};
+    Matrix eye43 = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}, {0, 0, 0}};
 
-    REQUIRE((A[0][0] == 1 && A[0][1] == 0 && A[0][2] == 0 && A[1][0] == 0 && A[1][1] == 1 && A[1][2] == 0 && A[2][0] == 0 && A[2][1] == 0 && A[2][2] == 1));
-    REQUIRE(B==Matrix());
-    REQUIRE(C==Matrix());
+    REQUIRE((Matrix::eye(3) == eye3 && Matrix::eye(3, 3) == eye3));
+    REQUIRE((Matrix::eye(3, 4) == eye34 && Matrix::eye(4, 3) == eye43));
+    REQUIRE((Matrix::eye(0) == emptyMat && Matrix::eye(-1) == emptyMat));
+    REQUIRE((Matrix::eye(3, 0) == emptyMat && Matrix::eye(0, 3) == emptyMat && Matrix::eye(3, -1) == emptyMat && Matrix::eye(-1, 3) == emptyMat));
+  }
+  SECTION("ones")
+  {
+    Matrix ones3 = {{1, 1, 1}, {1, 1, 1}, {1, 1, 1}};
+    Matrix ones34 = {{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}};
+    Matrix ones43 = {{1, 1, 1}, {1, 1, 1}, {1, 1, 1}, {1, 1, 1}};
+
+    REQUIRE((Matrix::ones(3) == ones3 && Matrix::ones(3, 3) == ones3));
+    REQUIRE((Matrix::ones(3, 4) == ones34 && Matrix::ones(4, 3) == ones43));
+    REQUIRE((Matrix::ones(0) == emptyMat && Matrix::ones(-1) == emptyMat));
+    REQUIRE((Matrix::ones(3, 0) == emptyMat && Matrix::ones(0, 3) == emptyMat && Matrix::ones(3, -1) == emptyMat && Matrix::ones(-1, 3) == emptyMat));
+  }
+  SECTION("zeros")
+  {
+    Matrix zeros3 = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+    Matrix zeros34 = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
+    Matrix zeros43 = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+
+    REQUIRE((Matrix::zeros(3) == zeros3 && Matrix::zeros(3, 3) == zeros3));
+    REQUIRE((Matrix::zeros(3, 4) == zeros34 && Matrix::zeros(4, 3) == zeros43));
+    REQUIRE((Matrix::zeros(0) == emptyMat && Matrix::zeros(-1) == emptyMat));
+    REQUIRE((Matrix::zeros(3, 0) == emptyMat && Matrix::zeros(0, 3) == emptyMat && Matrix::zeros(3, -1) == emptyMat && Matrix::zeros(-1, 3) == emptyMat));
+  }
+  SECTION("diag")
+  {
+    Matrix rowVector = Matrix({1, 2, 3});
+    Matrix colVector = Matrix({1, 2, 3}).transpose();
+    Matrix diagMatrix3 = Matrix({{1, 0, 0}, {0, 2, 0}, {0, 0, 3}});
+    Matrix diagMatrix34 = Matrix({{1, 0, 0, 0}, {0, 2, 0, 0}, {0, 0, 3, 0}});
+    Matrix diagMatrix43 = Matrix({{1, 0, 0}, {0, 2, 0}, {0, 0, 3}, {0, 0, 0}});
+
+    REQUIRE(Matrix::diag(rowVector) == diagMatrix3);
+    REQUIRE(Matrix::diag(colVector) == diagMatrix3);
+    REQUIRE(Matrix::diag(diagMatrix3) == colVector);
+    REQUIRE(Matrix::diag(diagMatrix34) == colVector);
+    REQUIRE(Matrix::diag(diagMatrix43) == colVector);
   }
 }
 
 TEST_CASE("matrix operation", "[arithmetic functions]")
 {
+  Matrix emptyMat = Matrix();
+  SECTION("add")
+  {
+    Matrix A = Matrix({{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
+    Matrix B = Matrix({{1, 3, 5}, {7, 9, 11}, {13, 15, 17}});
+    Matrix C = Matrix({{2, 5, 8}, {11, 14, 17}, {20, 23, 26}});
+
+    REQUIRE(A + B == C);
+    REQUIRE(B + A == C);
+    REQUIRE(A + emptyMat == emptyMat);
+    REQUIRE(emptyMat + A == emptyMat);
+    REQUIRE(A.add(B) == C);
+    REQUIRE(B.add(A) == C);
+    REQUIRE(A.add(emptyMat) == emptyMat);
+    REQUIRE(emptyMat.add(A) == emptyMat);
+  }
+  SECTION("minus")
+  {
+    Matrix A = Matrix({{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
+    Matrix B = Matrix({{1, 3, 5}, {7, 9, 11}, {13, 15, 17}});
+    Matrix C = Matrix({{0, -1, -2}, {-3, -4, -5}, {-6, -7, -8}});
+
+    REQUIRE(A - B == C);
+    REQUIRE(B - A == -C);
+    REQUIRE(A - emptyMat == emptyMat);
+    REQUIRE(emptyMat - A == emptyMat);
+    REQUIRE(A.sub(B) == C);
+    REQUIRE(B.sub(A) == -C);
+    REQUIRE(A.sub(emptyMat) == emptyMat);
+    REQUIRE(emptyMat.sub(A) == emptyMat);
+  }
+  // todo
 }
 
 TEST_CASE("matrix-related functions", "[basic functions]")
@@ -121,15 +199,15 @@ TEST_CASE("matrix-related functions", "[basic functions]")
   SECTION("inverse")
   {
     Matrix invertibleMat = Matrix({{1, 2, 3}, {4, 5, 5}, {7, 8, 11}});
-    Matrix emptyMat = Matrix();
+    Matrix nullMat = Matrix();
     Matrix uninvertibleMat = Matrix({{1, 2, 3}, {1, 2, 3}, {7, 8, 9}});
 
-    REQUIRE(invertibleMat.inverse() != emptyMat);
+    REQUIRE(invertibleMat.inverse() != nullMat);
     REQUIRE(invertibleMat.inverse().inverse() == invertibleMat);
     REQUIRE(invertibleMat * invertibleMat.inverse() == Matrix::eye(3));
     REQUIRE(invertibleMat.inverse().transpose() == invertibleMat.transpose().inverse());
 
-    REQUIRE(emptyMat.transpose() == emptyMat);
+    REQUIRE(nullMat.transpose() == nullMat);
 
     REQUIRE(invertibleMat / invertibleMat == Matrix::eye(3));
     REQUIRE(uninvertibleMat / invertibleMat == uninvertibleMat * invertibleMat.inverse());

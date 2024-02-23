@@ -11,14 +11,18 @@ configure_file(Config.h.in Config.h)
 add_subdirectory(Matrix)
 
 
-add_executable(test tests-main.cpp tests-matrix.cpp )
+add_executable(catch_test tests-main.cpp tests-matrix.cpp )
 
 
-target_link_libraries(test PUBLIC Matrix )
-target_include_directories(test PUBLIC
+target_link_libraries(catch_test PUBLIC Matrix )
+target_include_directories(catch_test PUBLIC
     "${PROJECT_BINARY_DIR}"
     "${PROJECT_SOURCE_DIR}/Matrix"
     # catch.hpp
 )
-
+enable_testing()
+add_test(
+    NAME test
+    COMMAND catch_test --success
+)
 
