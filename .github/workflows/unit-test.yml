@@ -30,7 +30,7 @@ jobs:
         shell: cmd
         run: |
           cd build
-          cmake ..
+          cmake .. --config Debug
       - name: cmake build
         run: |
           cd build
@@ -38,7 +38,7 @@ jobs:
       - name: run test
         run: |
           cd build
-          ctest
+          ctest --build-config Debug --rerun-failed --output-on-failure
   macos-unit-test:
     name: Unit tests on macOS
     runs-on: macos-latest
