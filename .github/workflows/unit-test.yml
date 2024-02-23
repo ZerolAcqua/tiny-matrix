@@ -26,19 +26,19 @@ jobs:
       - name: make build directory
         shell: cmd
         run: mkdir build
-
       - name: cmake configure
         shell: cmd
-        run: cmake ..
-        working-directory: build
-
+        run: |
+          cd build
+          cmake ..
       - name: cmake build
-        run: cmake --build .
-        working-directory: build
-
+        run: |
+          cd build
+          cmake --build .
       - name: run test
-        run: ctest
-        working-directory: build
+        run: |
+          cd build
+          ctest
   macos-unit-test:
     name: Unit tests on macOS
     runs-on: macos-latest
@@ -51,11 +51,11 @@ jobs:
       - name: create build directory
         run: mkdir build
       - name: cmake configure
-        run: /
+        run: |
           cd build
           cmake ..
       - name: cmake build
-        run: /
+        run: |
           cd build
           cmake --build .
       - name: run test
@@ -74,11 +74,11 @@ jobs:
       - name: create build directory
         run: mkdir build
       - name: cmake configure
-        run: /
+        run: |
           cd build
           cmake ..
       - name: cmake build
-        run: /
+        run: |
           cd build
           cmake --build .
       - name: run test
